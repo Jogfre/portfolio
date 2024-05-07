@@ -6,9 +6,8 @@ import { TypeAnimation } from 'react-type-animation'
 
 const HeroSection = () => {
   return (
-    <section className='min-h-screen px-4 border-b-4 border-white'>
+    <section className='min-h-screen px-4'>
         <div className='grid grid-cols-1 lg:grid-cols-12'>
-
             <div className='col-span-7 place-self-center text-center sm:text-left'>
                 <h1 className='text-white mb-4 text-2xl sm:text-5xl lg:text-6xl font-extrabold'>
                     <span className='text-3xl sm:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-[#2543da] via-[#d83e40] to-[#db7500]'>Hello, I am</span>
