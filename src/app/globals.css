@@ -31,3 +31,9 @@ body {
     text-wrap: balance;
   }
 }
+
+@media screen and (max-width: 320px) {
+  #__next {
+    display: flex
+  }
+}
