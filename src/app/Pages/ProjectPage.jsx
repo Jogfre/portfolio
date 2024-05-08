@@ -28,7 +28,8 @@ const fadeAnimationVariants = {
 
 const projects = [
   "SetSolver",
-  "FruitSpy"
+  "FruitSpy",
+  "Portfolio"
 ]
 
 const ProjectPage = () => {

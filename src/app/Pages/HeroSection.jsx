@@ -68,10 +68,7 @@ const HeroSection = () => {
                             "a Software Developer", 1500,
                             "a UI/UX Designer", 1500,
                             "a SET-Enjoyer", 1500,
-                            "a Lego Enthusiast", 1500,
-                            "a MTG Hater", 1500,
-                            "a Gajmer", 1500,
-                            "an ITKnight", 1500,
+                            "a Lego Enthusiast", 1500
                         ]}
                         wrapper="span"
                         height="200px"
