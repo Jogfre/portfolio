@@ -5,9 +5,9 @@ import NavBar from "./components/NavBar";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212] scroll-smooth" name="home">
+    <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden" >
       <NavBar />
-      <div className="container mx-auto mt-24 py-12"> {/* removed px-12 from css here */}
+      <div className="container mx-auto  mt-2 md:mt-24 py-12"> {/* removed px-12 from css here */}
       <HeroSection />
       <AboutSection />
       <ProjectPage />

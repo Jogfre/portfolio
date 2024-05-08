@@ -1,7 +1,7 @@
 "use client";
 import { React, useState, useTransition } from 'react'
 import TabButton from '../components/TabButton';
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const TAB_DATA = [
   {
@@ -74,7 +74,9 @@ const AboutSection = () => {
     <div className='md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
       <motion.img variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} src={"/images/ProfilePhoto.png"} width={500} height={500} alt="about image"/>
       <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-        <motion.h2 variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className='text-4xl font-bold my-4'>About Me</motion.h2>
+        <motion.h2 variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className='text-4xl font-bold my-4'>
+          About Me
+        </motion.h2>
         <motion.p variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}}>
           
           Hi there! I am Fredrik, a striving developer passionate about programming and development.
