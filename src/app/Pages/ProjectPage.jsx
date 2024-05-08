@@ -26,6 +26,11 @@ const fadeAnimationVariants = {
   },
 }
 
+const projects = [
+  "SetSolver",
+  "FruitSpy"
+]
+
 const ProjectPage = () => {
 
 
@@ -33,11 +38,13 @@ const ProjectPage = () => {
     <section name="projects" className='text-white min-h-screen justify-center mt-10 mb-40'>
       
       <motion.h1 variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className='text-4xl mb:text-6xl align-middle text-center mt-12 font-bold pb-0 md:pb-12 pt-14 md:pt-16'>
-        My Projects
+        Projects
       </motion.h1>
       
-      <Project projectName='SetSolver' index={1} />
-      <Project projectName='FruitSpy' index={2} />
+      {projects.map((projectName, index) => (
+        <Project projectName={projectName} index={index} />
+      ))}
+      
     
     </section>
   )

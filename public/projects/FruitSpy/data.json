@@ -1,4 +1,5 @@
 {
     "title": "Fruit Spy",
-    "description": "An app for your phone that can identify fruits and vegetables from an image, and also attempt to tell you their ripeness. Made for both Android and IOs"
+    "description": "An app for your phone that can identify fruits and vegetables from an image, and also attempt to tell you their ripeness. Made for both Android and IOs",
+    "icons": ["react", "expo", "python", "tensorflow"]
 }

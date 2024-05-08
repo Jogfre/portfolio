@@ -14,12 +14,14 @@
     width: 30vmin;
     border-radius: 1vmin;
     box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
+    overflow: hidden;
     
 }
 .small-card {
     width: 12vmin;
     border-radius: 2vmin;
     pointer-events: none;
+    background-color: white;
     transform: translate(75%, 75%);
     box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
 }
@@ -68,21 +70,6 @@
 /*
 ---------------------    Small Cards and their hover effects    ---------------------
 */
-.small-card:nth-child(1) {
-    background-color: aqua;
-}
-
-.small-card:nth-child(3) {
-    background-color: burlywood;
-}
-
-.small-card:nth-child(5) {
-    background-color: crimson;
-}
-
-.small-card:nth-child(7) {
-    background-color: blueviolet;
-}
 
 .card-container:hover > .small-card:nth-child(1) {
     transform: translate(220%, -60%) rotate(-15deg);

@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from "next/image"
 import { TypeAnimation } from 'react-type-animation'
-import { motion, stagger } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 
 const fadeAnimationVariants = {
@@ -69,6 +69,9 @@ const HeroSection = () => {
                             "a UI/UX Designer", 1500,
                             "a SET-Enjoyer", 1500,
                             "a Lego Enthusiast", 1500,
+                            "a MTG Hater", 1500,
+                            "a Gajmer", 1500,
+                            "an ITKnight", 1500,
                         ]}
                         wrapper="span"
                         height="200px"
@@ -77,7 +80,7 @@ const HeroSection = () => {
                         repeat={Infinity}
                     />
                 </motion.div>
-                <motion.p variants={fadeAnimationVariants} initial={"initial"} animate={"text"} viewport={{once: "runOnce"}} className='text-[#ADB7BE]  text-base sm:text-lg mb-6 lg:text-xl'>
+                <motion.p variants={fadeAnimationVariants} initial={"initial"} animate={"text"} viewport={{once: "runOnce"}} className='text-[#ADB7BE]  text-base sm:text-lg mb-6  mx-4 md:mx-0 lg:text-xl'>
                     Welcome to my portfolio! I am Fredrik, a passionate mobile and software developer. Through this platform, I invite you to explore my journey, projects, and other creative endeavors.
                 </motion.p>
                 <div className='place-self-center'>
