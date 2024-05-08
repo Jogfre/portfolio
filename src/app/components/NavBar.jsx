@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 import NavLink from './NavLink'
 import Image from "next/image"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid" 
-import MenuOverlay from './MenuOverlay';
+import MenuOverlay from '../Pages/MenuOverlay';
 
 const navLinks = [
     {title: "Home", path: "#home"},

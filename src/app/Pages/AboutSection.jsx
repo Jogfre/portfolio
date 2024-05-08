@@ -1,7 +1,7 @@
 "use client";
-import { React, useState, useTransition, useRef } from 'react'
-import TabButton from './TabButton';
-import { motion } from "framer-motion";
+import { React, useState, useTransition } from 'react'
+import TabButton from '../components/TabButton';
+import { delay, motion } from "framer-motion";
 
 const TAB_DATA = [
   {
@@ -20,10 +20,11 @@ const TAB_DATA = [
     ),
   },
   {
-    title: "Education",
-    id: "education",
+    title: "Experience",
+    id: "experience",
     content: (
       <ul className='list-disc pl-2'>
+        <li>4 Years Employed IT Technician at <a href='https://www.advania.se/' className='text-blue-200'>Advania</a></li>
         <li>3 Years at Kungliga Tekniska Högskolan</li>
       </ul>
     )
@@ -51,7 +52,7 @@ const fadeAnimationVariants = {
     opacity: 1,
     x: "0%",
     filter: "blur(0px)",
-    transition: { type: "easeIn", duration: 0.8}
+    transition: { type: 'ease-in', duration: 0.8, delay: 0.2}
   },
   runOnce: true
 }
@@ -59,11 +60,8 @@ const fadeAnimationVariants = {
 
 const AboutSection = () => {
 
-  const divRef = useRef(null);
-
   const[tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
-
 
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -72,14 +70,14 @@ const AboutSection = () => {
   }
 
   return (
-  <section className='text-white min-h-screen ba'>
+  <section className='text-white min-h-screen ba' id="about">
     <div className='md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
       <motion.img variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} src={"/images/ProfilePhoto.png"} width={500} height={500} alt="about image"/>
       <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
         <motion.h2 variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className='text-4xl font-bold my-4'>About Me</motion.h2>
         <motion.p variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}}>
           
-          Hi there! I am Fredrik, a new striving developer passionate about programming and development.
+          Hi there! I am Fredrik, a striving developer passionate about programming and development.
 
         </motion.p>        
         <motion.p variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className='mt-2'>
@@ -109,10 +107,10 @@ const AboutSection = () => {
           Skills
           </TabButton>
           <TabButton
-          selectTab={() => handleTabChange("education")}
-          active={tab === "education"}
+          selectTab={() => handleTabChange("experience")}
+          active={tab === "experience"}
           >
-          Education
+          Experience
           </TabButton>
           <TabButton
           selectTab={() => handleTabChange("hobbies")}
@@ -121,7 +119,7 @@ const AboutSection = () => {
           Hobbies
           </TabButton>
         </motion.div>
-        <motion.div variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className="mt-8 min-h-32">
+        <motion.div variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className="mt-8 min-h-44">
           {TAB_DATA.find((t) => t.id === tab).content}
         </motion.div>
       </div>

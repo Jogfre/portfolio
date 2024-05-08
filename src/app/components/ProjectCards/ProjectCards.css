@@ -1,0 +1,101 @@
+.card-container,
+.card {
+    width: 30vmin;
+    aspect-ratio: 5 / 7;
+    transition: transform 400ms ease;
+}
+
+.card {
+    aspect-ratio: 5 / 7;
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+}
+.big-card {
+    width: 30vmin;
+    border-radius: 1vmin;
+    box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
+    
+}
+.small-card {
+    width: 12vmin;
+    border-radius: 2vmin;
+    pointer-events: none;
+    transform: translate(75%, 75%);
+    box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
+}
+
+
+/*
+---------------------    Big Cards and their hover effects    ---------------------
+*/
+.big-card:nth-child(2) {
+    background-color: aqua;
+    transform: translateX(-6%) translateY(-1%) rotate(-4deg);
+}
+
+.big-card:nth-child(4) {
+    background-color: burlywood;
+    transform: translateX(5%) translateY(1%) rotate(6deg);
+}
+
+.big-card:nth-child(6) {
+    background-color: crimson;
+    transform:  translateX(-2%) rotate(-10deg);
+}
+
+.big-card:nth-child(8) {
+    background-color: blueviolet;
+    transform: rotate(0deg);
+}
+
+.card-container:hover > .big-card:nth-child(2) {
+    transform: translate(-75%, 16%) rotate(-24deg);
+}
+.card-container:hover > .big-card:nth-child(4) {
+    transform: translate(-25%, 8%) rotate(-8deg);
+}
+
+.card-container:hover > .big-card:nth-child(6) {
+    transform: translate(25%, 8%) rotate(8deg);
+}
+
+.card-container:hover > .big-card:nth-child(8) {
+    transform: translate(75%, 16%) rotate(24deg);
+}
+
+
+
+/*
+---------------------    Small Cards and their hover effects    ---------------------
+*/
+.small-card:nth-child(1) {
+    background-color: aqua;
+}
+
+.small-card:nth-child(3) {
+    background-color: burlywood;
+}
+
+.small-card:nth-child(5) {
+    background-color: crimson;
+}
+
+.small-card:nth-child(7) {
+    background-color: blueviolet;
+}
+
+.card-container:hover > .small-card:nth-child(1) {
+    transform: translate(220%, -60%) rotate(-15deg);
+}
+
+.card-container:hover > .small-card:nth-child(3) {
+    transform: translate(300%, 265%) rotate(10deg);
+}
+
+.card-container:hover > .small-card:nth-child(5) {
+    transform: translate(-120%, -60%) rotate(15deg);
+}
+
+.card-container:hover > .small-card:nth-child(7) {
+    transform: translate(-160%, 260%) rotate(-10deg);
+}
