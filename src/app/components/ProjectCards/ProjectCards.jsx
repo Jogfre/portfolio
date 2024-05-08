@@ -2,8 +2,6 @@ import React from 'react'
 import './ProjectCards.css'
 
 
-
-
 const ProjectCards = () => {
     return (
         <div className="card-container">

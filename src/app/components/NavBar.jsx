@@ -4,13 +4,13 @@ import React, {useState} from 'react'
 import NavLink from './NavLink'
 import Image from "next/image"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid" 
-import MenuOverlay from '../Pages/MenuOverlay';
+import MenuOverlay from './MenuOverlay';
 
 const navLinks = [
-    {title: "Home", path: "#home"},
-    {title: "About", path: "#about"},
-    {title: "Projects", path: "#projects"},
-    {title: "Contact", path: "#contact"},
+    {title: "Home", path: "home"},
+    {title: "About", path: "about"},
+    {title: "Projects", path: "projects"},
+    {title: "Contact", path: "contact"},
 ]
 
 
@@ -24,7 +24,7 @@ const NavBar = () => {
                 <Link href={"/"} className='text-3xl md:text-5xl'>
                     <Image 
                             src="/images/Icon.png"
-                            alt="hero image"
+                            alt="Logo image"
                             width={45}
                             height={45}
                         />
