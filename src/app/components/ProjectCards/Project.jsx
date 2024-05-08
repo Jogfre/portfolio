@@ -40,7 +40,7 @@ const Project = ({ projectName, index }) => {
             <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
             <p className='mt-4 md:max-w-xl md:min-w-xl text-lg'>{data.description}</p>
         </div>
-        <ProjectCards projectName={projectName} iconData={data.icons}/>
+        <ProjectCards projectName={projectName} iconData={data.icons} />
     </motion.div>
     )
 }

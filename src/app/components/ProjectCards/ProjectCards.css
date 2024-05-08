@@ -13,6 +13,7 @@
 .big-card {
     width: 30vmin;
     border-radius: 1vmin;
+    background-color: white;
     box-shadow: -1vmin 1vmin 2vmin rgba(0, 0, 0, 0.25);
     overflow: hidden;
     
@@ -31,22 +32,18 @@
 ---------------------    Big Cards and their hover effects    ---------------------
 */
 .big-card:nth-child(2) {
-    background-color: aqua;
     transform: translateX(-6%) translateY(-1%) rotate(-4deg);
 }
 
 .big-card:nth-child(4) {
-    background-color: burlywood;
     transform: translateX(5%) translateY(1%) rotate(6deg);
 }
 
 .big-card:nth-child(6) {
-    background-color: crimson;
     transform:  translateX(-2%) rotate(-10deg);
 }
 
 .big-card:nth-child(8) {
-    background-color: blueviolet;
     transform: rotate(0deg);
 }
 

@@ -42,7 +42,7 @@ const ProjectPage = () => {
       </motion.h1>
       
       {projects.map((projectName, index) => (
-        <Project projectName={projectName} index={index} />
+        <Project projectName={projectName} index={index} key={index}/>
       ))}
       
     
