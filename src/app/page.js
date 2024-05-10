@@ -2,6 +2,7 @@ import AboutSection from "./Pages/AboutSection";
 import HeroSection from "./Pages/HeroSection";
 import ProjectPage from "./Pages/ProjectPage";
 import NavBar from "./components/NavBar";
+import ScrollFadeComponent from "./components/ScrollFadeComponent";
 
 export default function Home() {
   return (

@@ -38,13 +38,13 @@ const fadeAnimationVariants = {
         opacity: 1,
         y: "0%",
         filter: "blur(0px)",
-        transition: { type: 'ease-in', duration: 0.8, delay: 2}
+        transition: { type: 'ease-in', duration: 0.8, delay: 1.8}
     },
     button_2: {
         opacity: 1,
         y: "0%",
         filter: "blur(0px)",
-        transition: { type: 'ease-in', duration: 0.8, delay: 2.2}
+        transition: { type: 'ease-in', duration: 0.8, delay: 2}
     },
   }
 

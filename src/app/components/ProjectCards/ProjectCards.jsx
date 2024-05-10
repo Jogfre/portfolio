@@ -4,7 +4,7 @@ import './ProjectCards.css'
 
 
 
-const ProjectCards = ( {projectName, iconData} ) => {
+const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
     const iconLen = iconData.length
     
@@ -14,7 +14,7 @@ const ProjectCards = ( {projectName, iconData} ) => {
     const icon4 = iconData[3]
 
     return (
-        <div className="card-container">
+        <div className={isOpen ? "open-card-container" : "card-container"}>
 
             <div className="small-card card" style={iconLen >= 3 ? {opacity: 1} : {opacity: 0}} >
                 <Image 

@@ -1,8 +1,16 @@
+.open-card-container,
+.card {
+    width: 30vmin;
+    aspect-ratio: 5 / 7;
+    transition: transform 500ms ease-in-out;
+}
+
+
 .card-container,
 .card {
     width: 30vmin;
     aspect-ratio: 5 / 7;
-    transition: transform 400ms ease;
+    transition: transform 500ms ease-in-out;
 }
 
 .card {
@@ -52,18 +60,18 @@
     transform: rotate(0deg);
 }
 
-.card-container:hover > .big-card:nth-child(2) {
+.open-card-container > .big-card:nth-child(2) {
     transform: translate(-75%, 16%) rotate(-24deg);
 }
-.card-container:hover > .big-card:nth-child(4) {
+.open-card-container > .big-card:nth-child(4) {
     transform: translate(-25%, 8%) rotate(-8deg);
 }
 
-.card-container:hover > .big-card:nth-child(6) {
+.open-card-container > .big-card:nth-child(6) {
     transform: translate(25%, 8%) rotate(8deg);
 }
 
-.card-container:hover > .big-card:nth-child(8) {
+.open-card-container > .big-card:nth-child(8) {
     transform: translate(75%, 16%) rotate(24deg);
 }
 
@@ -73,18 +81,18 @@
 ---------------------    Small Cards and their hover effects    ---------------------
 */
 
-.card-container:hover > .small-card:nth-child(1) {
+.open-card-container > .small-card:nth-child(1) {
     transform: translate(220%, -60%) rotate(-15deg);
 }
 
-.card-container:hover > .small-card:nth-child(3) {
+.open-card-container > .small-card:nth-child(3) {
     transform: translate(300%, 265%) rotate(10deg);
 }
 
-.card-container:hover > .small-card:nth-child(5) {
+.open-card-container > .small-card:nth-child(5) {
     transform: translate(-120%, -60%) rotate(15deg);
 }
 
-.card-container:hover > .small-card:nth-child(7) {
+.open-card-container > .small-card:nth-child(7) {
     transform: translate(-160%, 260%) rotate(-10deg);
 }

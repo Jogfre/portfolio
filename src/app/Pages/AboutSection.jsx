@@ -37,6 +37,7 @@ const TAB_DATA = [
         <li>Playing Piano</li>
         <li>Board Games</li>
         <li>Cyber Security / Hacking</li>
+        <li>Computer Vision</li>
       </ul>
     )
   },
@@ -72,7 +73,7 @@ const AboutSection = () => {
   return (
   <section className='text-white min-h-screen ba' name="about">
     <div className='md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
-      <motion.img className=' rounded-xl'variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} src={"/images/ProfilePhoto.png"} width={500} height={500} alt="about image"/>
+      <motion.img className='rounded-xl w-2/3 md:w-[500px]' variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} src={"/images/AboutMePhoto.jpg"} alt="about image"/>
       <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
         <motion.h2 variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className='text-4xl font-bold my-4'>
           About Me

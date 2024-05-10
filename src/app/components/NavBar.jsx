@@ -7,10 +7,10 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid"
 import MenuOverlay from './MenuOverlay';
 
 const navLinks = [
-    {title: "Home", path: "home"},
-    {title: "About", path: "about"},
-    {title: "Projects", path: "projects"},
-    {title: "Contact", path: "contact"},
+    {title: "Home", path: "home", offset: 0},
+    {title: "About", path: "about", offset: -40},
+    {title: "Projects", path: "projects", offset: -40},
+    {title: "Contact", path: "contact", offset: 0},
 ]
 
 
@@ -34,7 +34,7 @@ const NavBar = () => {
                         {
                             navLinks.map((link, index) => (
                                 <li key={index}>
-                                    <NavLink href={link.path} title={link.title}/>
+                                    <NavLink href={link.path} title={link.title} offset={link.offset}/>
                                 </li>
                             ))
                         }
