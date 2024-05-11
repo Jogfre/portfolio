@@ -5,6 +5,11 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    'shadow-[#2543da]',
+    'shadow-[#d83e40]',
+    'shadow-[#db7500]',
+  ],
   theme: {
     extend: {
       backgroundImage: {

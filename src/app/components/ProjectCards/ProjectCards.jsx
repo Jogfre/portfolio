@@ -18,7 +18,7 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             <div className="small-card card" style={iconLen >= 3 ? {opacity: 1} : {opacity: 0}} >
                 <Image 
-                        src={`/projects/icons/${icon3}.svg`}
+                        src={`/icons/${icon3}.svg`}
                         alt={`${projectName} icon 3`}
                         className='pointer-events-none '
                         fill
@@ -36,7 +36,7 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             <div className="small-card card" style={iconLen >= 4 ? {opacity: 1} : {opacity: 0}} >
                 <Image 
-                        src={`/projects/icons/${icon4}.svg`}
+                        src={`/icons/${icon4}.svg`}
                         alt={`${projectName} icon 4`}
                         className='pointer-events-none'
                         fill
@@ -52,10 +52,10 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
                 />                
             </div>
 
-            <div className="small-card card" style={iconLen >= 2 ? {opacity: 1} : {opacity: 0}} >
+            <div className="small-card card" style={iconLen >= 1 ? {opacity: 1} : {opacity: 0}} >
                 <Image 
-                        src={`/projects/icons/${icon2}.svg`}
-                        alt={`${projectName} icon 2`}
+                        src={`/icons/${icon1}.svg`}
+                        alt={`${projectName} icon 1`}
                         className='pointer-events-none'
                         fill
                 />   
@@ -70,10 +70,10 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
                 />
             </div>
 
-            <div className="small-card card" style={iconLen >= 1 ? {opacity: 1} : {opacity: 0}} >
+            <div className="small-card card" style={iconLen >= 2 ? {opacity: 1} : {opacity: 0}} >
                 <Image 
-                        src={`/projects/icons/${icon1}.svg`}
-                        alt={`${projectName} icon  1`}
+                        src={`/icons/${icon2}.svg`}
+                        alt={`${projectName} icon  2`}
                         className='pointer-events-none'
                         fill
                 />   

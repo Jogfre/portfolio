@@ -5,17 +5,9 @@ import Project from '../components/ProjectCards/Project.jsx';
 
 const fadeAnimationVariants = {
   initial: {
-    y:"-20%",
+    y:"-30%",
     opacity: 0,
     filter: "blur(4px)",
-  },
-  initial_L: {
-    opacity: 0,
-    x: "-10%",
-  },
-  initial_R: {
-    opacity: 0,
-    x: "10%",
   },
   animate: {
     opacity: 1,
@@ -29,7 +21,9 @@ const fadeAnimationVariants = {
 const projects = [
   "SetSolver",
   "FruitSpy",
-  "Portfolio"
+  "Portfolio",
+  "Photoshop",
+  "Posters",
 ]
 
 const ProjectPage = () => {
@@ -45,7 +39,7 @@ const ProjectPage = () => {
       </motion.h1>
       
       {projects.map((projectName, index) => (
-        <div className='md:mb-20 mb-14'>
+        <div className='md:mb-20 mb-14' key={index}>
           <Project projectName={projectName} index={index} key={index}/>
         </div>
       ))}
