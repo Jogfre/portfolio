@@ -23,7 +23,6 @@ const projects = [
   "FruitSpy",
   "Portfolio",
   "Photoshop",
-  "Posters",
 ]
 
 const ProjectPage = () => {

@@ -1,4 +1,5 @@
 import AboutSection from "./Pages/AboutSection";
+import ContactSection from "./Pages/ContactSection";
 import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
@@ -11,6 +12,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ProjectSection />
+      <ContactSection />
       </div>
     </main>
   );

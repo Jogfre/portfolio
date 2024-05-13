@@ -3,6 +3,7 @@
     width: 30vmin;
     aspect-ratio: 5 / 7;
     transition: transform 500ms ease-in-out;
+    overflow: hidden;
 }
 
 
@@ -11,13 +12,14 @@
     width: 30vmin;
     aspect-ratio: 5 / 7;
     transition: transform 500ms ease-in-out;
+    overflow: hidden;
 }
 
 .card {
     aspect-ratio: 5 / 7;
     background-color: rgba(255, 255, 255, 1);
     position: absolute;
-    border-color: #1f1f1f;
+    border-color: #161616;
     border-style: solid;
     
 }

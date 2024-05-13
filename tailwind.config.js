@@ -9,6 +9,12 @@ module.exports = {
     'shadow-[#2543da]',
     'shadow-[#d83e40]',
     'shadow-[#db7500]',
+    'hover:text-[#2543da]',
+    'hover:text-[#d83e40]',
+    'hover:text-[#db7500]',
+    'hover:border-[#2543da]',
+    'hover:border-[#d83e40]',
+    'hover:border-[#db7500]',
   ],
   theme: {
     extend: {
