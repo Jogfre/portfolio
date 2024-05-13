@@ -14,7 +14,7 @@ const fadeAnimationVariants = {
     x: "0%",
     y: "0%",
     filter: "blur(0px)",
-    transition: { type: 'ease-out', duration: 1.2, delay: 0.2}
+    transition: { type: 'ease-out', duration: 1.2}
   },
 }
 
@@ -32,7 +32,7 @@ const ProjectPage = () => {
     <section name="projects" className='text-white min-h-screen justify-center mt-10 mb-40'>
       
       <motion.h1 
-        variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} 
+        variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{ once: "runOnce", amount: 0.5 }} 
         className='text-4xl md:text-6xl align-middle text-center font-bold pb-0 md:pb-12 pt-14 md:pt-16'>
           Projects
       </motion.h1>

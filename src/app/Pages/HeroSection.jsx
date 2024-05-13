@@ -101,7 +101,7 @@ const HeroSection = () => {
                             className='px-6 py-3 w-full md:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] hover:from-[#3a436d] hover:via-[#b45254] hover:to-[#ffbd71] text-white mr-4'>
                             Get in contact
                         </motion.button>
-                    </Link>                            
+                    </Link>
                     
                     <motion.button variants={fadeAnimationVariants} 
                         initial={"initial_button"} animate={"button_2"} viewport={{once: "runOnce"}} 

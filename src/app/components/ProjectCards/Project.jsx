@@ -45,8 +45,8 @@ const Project = ({ projectName, index }) => {
   const colorHex = colors[index % 3]
   const highlightColor = `[${colorHex}]`
 
-  const containerFormat = `${ enterFromRight ? 'flex-row-reverse' : '' } ${ isInView ? 'shadow-xl' : '' } shadow-${highlightColor} grid grid-cols-1 2xl:flex 2xl:justify-around place-items-center 2xl:mt-0 mt-4 py-4 xl:py-20 bg-[#1f1f1f] 2xl:pb-24 pb-19 rounded-xl transition-shadow duration-500 ${isInView ? 'pointer-events-none' : ''}`
-  const bracketIconFormat = `md:h-20 md:w-20 h-10 w-10 border-2 md:px-2 md:py-2 px-0 py-0 border-white rounded-full text-white transition-all duration-300 hover:text-${highlightColor} hover:border-${highlightColor} pointer-events-auto z-20`
+  const containerFormat = `${ enterFromRight ? 'flex-row-reverse' : '' } ${ isInView ? 'shadow-lg' : '' } shadow-${highlightColor} grid grid-cols-1 2xl:flex 2xl:justify-around place-items-center 2xl:mt-0 mt-4 py-4 xl:py-20 bg-[#1f1f1f] 2xl:pb-24 pb-19 rounded-xl 2xl:mb-32 mb-0 transition-shadow duration-500 ${isInView ? 'pointer-events-none' : ''}`
+  const bracketIconFormat = `md:h-20 md:w-20 h-10 w-10 p-2 rounded-full text-white transition-all duration-200 hover:text-${highlightColor} pointer-events-auto`
 
 
   const codeBracketIconClick = (link) => {
@@ -56,7 +56,7 @@ const Project = ({ projectName, index }) => {
   }
   
   return (
-    <Link className='cursor-pointer' to={`project_${index}`} duration={800} smooth={true} offset={-140} style={{pointerEvents: isInView ? 'none' : 'all'}}>
+    <Link className='cursor-pointer' to={`project_${index}`} duration={600} smooth={true} offset={-140} style={{pointerEvents: isInView ? 'none' : 'all'}}>
       <motion.div
         name = {`project_${index}`}
         ref = {targetRef}
@@ -65,8 +65,8 @@ const Project = ({ projectName, index }) => {
           <div className='mx-5 table-cell align-middle text-center md:pb-8 :pb-12 mb-8 2xl:mb-0 items-center'>
             <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
             <p className='mt-4 md:max-w-xl md:min-w-xl md:text-lg text-md'>{data.description}</p>
+
             <div className='button_container flex justify-around my-2 2xl:my-12' >
-                
                 <motion.div
                   whileHover={{ 
                     scale: 1.15,
@@ -74,7 +74,7 @@ const Project = ({ projectName, index }) => {
                     transition: {duration: 0.2},
                   }}
                   transition={{ duration: 0.2 }}
-                  className='rounded-full'
+                  className={`rounded-full p-1 border-2 border-white hover:border-${highlightColor} transition-colors duration-200`}
                 >
                   <CodeBracketIcon className= {bracketIconFormat} onClick={() => {codeBracketIconClick(data.link)}}/>
                 </motion.div>
