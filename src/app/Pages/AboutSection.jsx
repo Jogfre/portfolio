@@ -55,6 +55,17 @@ const fadeAnimationVariants = {
     filter: "blur(0px)",
     transition: { type: 'ease-in', duration: 1},
   },
+  initial_picture: {
+    opacity: 0,
+    x: "-20%",
+    filter: "blur(8px)",
+  },
+  animate_picture: {
+    opacity: 1,
+    x: "0%",
+    filter: "blur(0px)",
+    transition: { type: 'ease-in', duration: 1},
+  },
   runOnce: true
 }
   
@@ -73,7 +84,7 @@ const AboutSection = () => {
   return (
   <section className='text-white min-h-screen ba' name="about">
     <div className='md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
-      <motion.img className='rounded-xl w-2/3 md:w-[500px]' variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce", amount: 0.25}} src={"/images/AboutMePhoto.jpg"} alt="about image"/>
+      <motion.img className='rounded-xl w-2/3 md:w-[500px]' variants={fadeAnimationVariants} initial={"initial_picture"} whileInView={"animate_picture"} viewport={{once: "runOnce", amount: 0.25}} src={"/images/AboutMePhoto.jpg"} alt="about image"/>
       <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
         <motion.h2 variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce", amount: 0.5}} className='text-4xl font-bold my-4'>
           About Me

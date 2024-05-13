@@ -1,5 +1,5 @@
 "use client";
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from "framer-motion";
 import Project from '../components/ProjectCards/Project.jsx';
 
@@ -27,13 +27,23 @@ const projects = [
 
 const ProjectPage = () => {
 
+  
+  
+  /* ---> Stuff to perhaps add "scroll buttons" at a later time. currentPage is the last  page that was opened.
+
+  const [currentPage, setCurrentPage] = useState(0)
+  useEffect(() => { 
+    console.log(`currentPage changed. It is now: ${currentPage}`)
+  }, [currentPage]);
+
+  */
 
   return (
     <section name="projects" className='text-white min-h-screen justify-center mt-10 mb-40'>
       
       <motion.h1 
         variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{ once: "runOnce", amount: 0.5 }} 
-        className='text-4xl md:text-6xl align-middle text-center font-bold pb-0 md:pb-12 pt-14 md:pt-16'>
+        className='text-4xl md:text-6xl align-middle text-center font-bold pb-0 md:pb-12 pt-14 md:pt-16 2xl:mb-10'>
           Projects
       </motion.h1>
       
