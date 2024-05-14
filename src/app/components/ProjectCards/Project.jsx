@@ -15,13 +15,14 @@ const Project = ({ projectName, index }) => {
       offset: ["start 90%", "end 10%"],
   })
   const smoothY = useSpring(scrollYProgress, {
-    stiffness: 80,
+    mass: 0.1,
+    stiffness: 100,
     damping: 20,
-    restDelta: 0.0001
+    restDelta: 0.001
   });
 
-  const enterFrom = enterFromRight ? "20%" : "-20%"
-  const exitTo = !enterFromRight ? "20%" : "-20%"
+  const enterFrom = enterFromRight ? "10%" : "-10%"
+  const exitTo = !enterFromRight ? "10%" : "-10%"
 
   const opacity = useTransform(
       smoothY,
@@ -31,11 +32,11 @@ const Project = ({ projectName, index }) => {
 
   const transform = useTransform(
     smoothY,
-    [0, 0.4, 0.55, 0.9],
+    [0, 0.33, 0.66, 0.9],
     [enterFrom, "0%", "0%", exitTo],
   )
 
-  const isInView = useInView(targetRef, {amount: "all", margin: "0% 0% 0% 0%"}) 
+  const isInView = useInView(targetRef, {amount: "all", margin: "0% 0% 10% 0%"}) 
   
 
   /* ---> useEffect to track the change and update the current index. Whenever isInView changes, the hook function will be updated.
