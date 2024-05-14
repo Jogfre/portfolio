@@ -5,7 +5,6 @@ import Project from '../components/ProjectCards/Project.jsx';
 
 const fadeAnimationVariants = {
   initial: {
-    y: "100%",
     scale: 1.4,
     opacity: 0,
     filter: "blur(4px)",

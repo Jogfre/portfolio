@@ -1,8 +1,7 @@
-import { React, useRef, useEffect } from 'react'
+import { React, useRef } from 'react'
 import { motion, useTransform, useScroll, useSpring, useInView } from 'framer-motion'
-import { CodeBracketIcon } from '@heroicons/react/24/solid'
 import ProjectCards from './ProjectCards.jsx'  
-import { Link } from 'react-scroll'
+import { Element, scroller } from 'react-scroll';
 
 const Project = ({ projectName, index }) => {
 
@@ -54,8 +53,8 @@ const Project = ({ projectName, index }) => {
   const colorHex = colors[index % 3]
   const highlightColor = `[${colorHex}]`
 
-  const containerFormat = `${ enterFromRight ? 'flex-row-reverse 2xl:pl-44' : '2xl:pr-44' } ${ isInView ? 'shadow-lg' : '' } shadow-${highlightColor} max-xl:flex-col items-center justify-center 2xl:flex 2xl:justify-between place-items-center 2xl:mt-0 mt-4 py-4 2xl:py-20 bg-[#1f1f1f] 2xl:px-10 2xl:pb-24 pb-18 rounded-xl 2xl:mb-32 mb-0 transition-shadow duration-500 max-2xl:max-h-svh`
-  const bracketIconFormat = `2xl:h-20 2xl:w-20 h-10 w-10 p-2 rounded-full text-white transition-all duration-200 group-hover:text-${highlightColor} pointer-events-auto 2xl:text-lg text-sm`
+  const containerFormat = `${ enterFromRight ? 'flex-row-reverse 2xl:pl-44' : '2xl:pr-44' } ${ isInView ? 'shadow-lg' : '' } shadow-${highlightColor} max-xl:flex-col items-center justify-center 2xl:flex 2xl:justify-between place-items-center 2xl:mt-0 mt-4 py-4 2xl:py-20 bg-[#1f1f1f] 2xl:px-10 2xl:pb-24 pb-18 rounded-xl 2xl:mb-32 mb-0 transition-shadow duration-500 2xl:max-h-[550px] content-center`
+  const bracketIconFormat = `2xl:h-20 2xl:w-20 h-10 w-10 p-2 rounded-full text-white transition-all duration-200 group-hover:text-${highlightColor} pointer-events-auto 2xl:text-lg text-sm cursor-pointer`
 
 
   const codeBracketIconClick = (link) => {
@@ -65,17 +64,17 @@ const Project = ({ projectName, index }) => {
   }
   
   return (
-    <Link className='cursor-pointer cursor' to={`project_${index}`} duration={600} smooth={true} offset={-140}>
+    <Element name = {`project_${index}`}>
       <motion.div
-        name = {`project_${index}`}
         ref = {targetRef}
         style={ {opacity: opacity, translateX: transform}}
-        className={containerFormat}>
+        className={containerFormat}
+        onClick={() => {scroller.scrollTo(`project_${index}`, {duration: 500, smooth: true, offset: -160})}}>
           <div className='mx-5 flex-col md:pb-8 :pb-12 mb-8 2xl:mb-0 items-center align-middle text-center justify-center'>
             <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
             <p className='mt-4 2xl:max-w-2xl max-w-xl m-auto 2xl:text-lg text-sm'>{data.description}</p>
 
-            <div className='button_container flex justify-around 2xl:my-12 my-4' >
+            <div className='button_container flex justify-around 2xl:mt-12 mt-6' >
                 <motion.div
                   whileHover={{ 
                     scale: 1.15,
@@ -93,7 +92,7 @@ const Project = ({ projectName, index }) => {
             <ProjectCards projectName={projectName} iconData={data.icons} isOpen={isInView}/>
           </div>
       </motion.div>
-    </Link>
+    </Element>
   )
 }
 

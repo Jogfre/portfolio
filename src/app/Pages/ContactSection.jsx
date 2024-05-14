@@ -80,7 +80,8 @@ const ContactSection = () => {
                 <Image src={LinkedInIcon} alt="LinkedIn Icon" className='size-14'/>
             </motion.a>
             
-            {/*<motion.a 
+            {/*
+            <motion.a 
               href="https://discordapp.com/users/168743644306735104"  
               target="_blank" 
               rel="noopener noreferrer"
@@ -91,7 +92,8 @@ const ContactSection = () => {
               transition={{ duration: 0.2 }}
               >
               <Image src={DiscordIcon} alt="Discord Icon" className='size-14'/>
-            </motion.a>*/}
+            </motion.a>
+            */}
             
           </div>
       </div>

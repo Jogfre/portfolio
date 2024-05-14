@@ -25,14 +25,16 @@
 }
 .big-card {
     width: 30vmin;
+    max-width: 250px;
     border-radius: 1vmin;
     background-color: white;
     border-width: 3px;
     overflow: hidden;
     
 }
-.small-card {
+.small-card { 
     width: 12vmin;
+    max-width: 100px;
     border-radius: 2vmin;
     pointer-events: none;
     background-color: white;
