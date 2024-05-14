@@ -1,8 +1,12 @@
 "use client"
 import { React, useRef } from 'react'
-import { motion, useTransform, useScroll, useSpring, useInView } from 'framer-motion'
+import { motion, useTransform, useScroll, useSpring } from 'framer-motion'
+import Image from "next/image";
 
-
+import GitHubIcon from '../../../public/icons/github_icon.svg'
+import LinkedInIcon from "../../../public/icons/linkedin_icon.svg"
+import DiscordIcon from "../../../public/icons/discord_icon.svg"
+import EmailCard from '../components/EmailCard';
 
 
 
@@ -20,18 +24,18 @@ const ContactSection = () => {
 
   const opacity = useTransform(
     smoothY,
-    [0.1, 0.4],
+    [0.1, 0.2],
     [0, 1],
   )
   const scale = useTransform(
     smoothY,
-    [0.1, 0.5],
+    [0.1, 0.4],
     [0.6, 1],
   )
 
   const yPos = useTransform(
     smoothY,
-    [0, 0.5],
+    [0, 0.4],
     ["60%", "0%"],
   )
 
@@ -42,12 +46,57 @@ const ContactSection = () => {
       name='contact'
       ref = {targetRef}
       style={ {opacity: opacity, scale: scale, translateY: yPos}}
-      className='min-h-screen bg-slate-600 flex justify-center items-center rounded-2xl'
-      >
-        <div className='flex-box text-center'>
-            <h1 className='md:text-6xl text-2xl'>{"<Contact Section will be here>"}</h1>
-            <p className=''>eventually...</p>
-        </div>
+      className='grid md:grid-cols-2 mt-12 py-24 gap-4 min-h-[80svh]'
+    >
+      <div className='px-5'>
+          <h5 className='text-xl font-bold text-white my-2'>Let&apos;s Connect!</h5>
+          <p className='text-[#ADB7BE] mb-4 max-w-md'>I am currently looking for new opportunities. Wether you have a question or just want to reach out, I will try my best to get back to you!</p>
+          
+          
+          <div className='socials flex flex-row gap-2'>
+
+            <motion.a 
+              href="https://github.com/Jogfre" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ 
+                scale: 1.15,
+                transition: {duration: 0.2},
+              }}
+              transition={{ duration: 0.2 }}
+              >
+              <Image src={GitHubIcon} alt="GitHub Icon" className='size-14'/>
+            </motion.a>
+            
+            <motion.a 
+              href="https://www.linkedin.com/in/fredrik-jogell-7299161b6/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ 
+                scale: 1.15,
+                transition: {duration: 0.2},
+              }}
+              transition={{ duration: 0.2 }}>
+                <Image src={LinkedInIcon} alt="LinkedIn Icon" className='size-14'/>
+            </motion.a>
+            
+            {/*<motion.a 
+              href="https://discordapp.com/users/168743644306735104"  
+              target="_blank" 
+              rel="noopener noreferrer"
+              whileHover={{ 
+                scale: 1.15,
+                transition: {duration: 0.2},
+              }}
+              transition={{ duration: 0.2 }}
+              >
+              <Image src={DiscordIcon} alt="Discord Icon" className='size-14'/>
+            </motion.a>*/}
+            
+          </div>
+      </div>
+      <EmailCard />
+
     </motion.section>
   )
 }

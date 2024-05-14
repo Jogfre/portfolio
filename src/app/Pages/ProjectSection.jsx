@@ -5,16 +5,18 @@ import Project from '../components/ProjectCards/Project.jsx';
 
 const fadeAnimationVariants = {
   initial: {
-    y:"-30%",
+    y: "100%",
+    scale: 1.4,
     opacity: 0,
     filter: "blur(4px)",
   },
   animate: {
     opacity: 1,
+    scale: 1,
     x: "0%",
     y: "0%",
     filter: "blur(0px)",
-    transition: { type: 'ease-out', duration: 1.2}
+    transition: { type: 'ease-out', duration: 1}
   },
 }
 
@@ -26,17 +28,6 @@ const projects = [
 ]
 
 const ProjectPage = () => {
-
-  
-  
-  /* ---> Stuff to perhaps add "scroll buttons" at a later time. currentPage is the last  page that was opened.
-
-  const [currentPage, setCurrentPage] = useState(0)
-  useEffect(() => { 
-    console.log(`currentPage changed. It is now: ${currentPage}`)
-  }, [currentPage]);
-
-  */
 
   return (
     <section name="projects" className='text-white min-h-screen justify-center mt-10 mb-40'>
@@ -53,7 +44,6 @@ const ProjectPage = () => {
         </div>
       ))}
       
-    
     </section>
   )
 }
