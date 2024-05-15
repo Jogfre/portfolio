@@ -15,7 +15,7 @@ const Project = ({ projectName, index }) => {
   })
   const smoothY = useSpring(scrollYProgress, {
     mass: 0.1,
-    stiffness: 100,
+    stiffness: 80,
     damping: 20,
     restDelta: 0.001
   });
@@ -31,11 +31,11 @@ const Project = ({ projectName, index }) => {
 
   const transform = useTransform(
     smoothY,
-    [-2, 3],
+    [-3, 4],
     [enterFrom, exitTo],
   )
 
-  const isInView = useInView(targetRef, {amount: "all", margin: "0% 0% 10% 0%"}) 
+  const isInView = useInView(targetRef, {amount: "all", margin: "10% 10% 10% 10%"}) 
   
 
   /* ---> useEffect to track the change and update the current index. Whenever isInView changes, the hook function will be updated.
@@ -53,7 +53,7 @@ const Project = ({ projectName, index }) => {
   const colorHex = colors[index % 3]
   const highlightColor = `[${colorHex}]`
 
-  const containerFormat = `${ enterFromRight ? 'flex-row-reverse 2xl:pl-44' : '2xl:pr-44' } ${ isInView ? 'shadow-lg' : '' } shadow-${highlightColor} max-xl:flex-col items-center justify-center 2xl:flex 2xl:justify-between place-items-center 2xl:mt-0 mt-4 py-4 2xl:py-20 bg-[#1f1f1f] 2xl:px-10 2xl:pb-24 pb-18 rounded-xl 2xl:mb-44 mb-0 transition-shadow duration-500 2xl:max-h-[550px] content-center`
+  const containerFormat = `${ enterFromRight ? 'flex-row-reverse 2xl:pl-44' : '2xl:pr-44' } ${ isInView ? 'shadow-lg' : '' } shadow-${highlightColor} max-xl:flex-col max-2xl:mx-5 items-center justify-center 2xl:flex 2xl:justify-between place-items-center 2xl:mt-0 mt-4 py-4 2xl:py-20 bg-[#1f1f1f] 2xl:px-10 2xl:pb-24 pb-18 rounded-xl 2xl:mb-44 mb-0 transition-shadow duration-500 2xl:max-h-[550px] content-center`
   const bracketIconFormat = `2xl:h-20 2xl:w-20 h-10 w-10 p-2 rounded-full text-white transition-all duration-200 group-hover:text-${highlightColor} pointer-events-auto 2xl:text-lg text-sm cursor-pointer`
 
 

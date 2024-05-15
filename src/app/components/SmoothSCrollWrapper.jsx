@@ -1,9 +1,12 @@
 "use client"
 import React, { useEffect, useRef, useState } from "react"
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "framer-motion";
 
 const SmoothScrollWraper = ({ children }) => {
 
+
+    // Make sure site has loaded.
+    const [isLoading, setIsLoading] = useState(true);
 
 
     // get height information
@@ -19,6 +22,7 @@ const SmoothScrollWraper = ({ children }) => {
             setWindowHeight((window.innerHeight))
         };   
 
+        window.scrollTo(0, 0)
         handleResize();
 
         window.addEventListener('resize', handleResize);
@@ -31,9 +35,9 @@ const SmoothScrollWraper = ({ children }) => {
 
     
     // Intercept normal scroll behavior
-    const  { scrollYProgress } =  useScroll();
-    const smoothProgres = useSpring(scrollYProgress, {
-        stiffness: 80,
+    let  { scrollYProgress } =  useScroll();
+    let smoothProgres = useSpring(scrollYProgress, {
+        stiffness: 90,
         damping: 20,
         restDelta: 0.00001,
     })
@@ -43,11 +47,22 @@ const SmoothScrollWraper = ({ children }) => {
     })
 
 
+    // Check for changes of the smoothProgress value
+    useMotionValueEvent(smoothProgres, "change", (latest) => {
+        if (isLoading) {
+            window.scrollTo(0, 0)
+            scrollYProgress = 0;
+        }
+
+        setIsLoading(false);
+    })
+    
+
 
     return (
         <>
             <div style={{height: contentHeight}}/>
-            <motion.div className="w-screen fixed top-0 flex flex-col" ref={contentRef} style={{y: y}}>
+            <motion.div className="w-screen fixed top-0 flex flex-col" ref={contentRef} style={{y: isLoading ? 0 : y}}>
                 {children}
             </motion.div>
 
