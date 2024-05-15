@@ -57,7 +57,9 @@ const Project = ({ projectName, index }) => {
   const bracketIconFormat = `2xl:h-20 2xl:w-20 h-10 w-10 p-2 rounded-full text-white transition-all duration-200 group-hover:text-${highlightColor} pointer-events-auto 2xl:text-lg text-sm cursor-pointer`
 
 
-  const codeBracketIconClick = (link) => {
+  const handeButtonClick = (link, e) => {
+    if(e && e.stopPropagation) e.stopPropagation(); // Prevent button from triggering the  parrent scrollTo event.
+
     if (link != "/") {
       open(data.link, "_blank")
     }
@@ -84,7 +86,7 @@ const Project = ({ projectName, index }) => {
                   transition={{ duration: 0.2 }}
                   className={`group rounded-full p-1 2xl:border-2 border border-white hover:border-${highlightColor} transition-colors duration-200`}
                 >
-                  <a className={bracketIconFormat} onClick={() => {codeBracketIconClick(data.link)}}>Check out this project!</a>
+                  <a className={bracketIconFormat} onClick={(e) => {handeButtonClick(data.link, e)}}>Check out this project!</a>
                 </motion.div>
             </div>
           </div>
