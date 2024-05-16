@@ -46,20 +46,13 @@ const fadeAnimationVariants = {
         filter: "blur(0px)",
         transition: { type: 'ease-in', duration: 1, delay: 1}
     },
-    button_1: {
+    button: {
         opacity: 1,
         scale: 1,
         y: "0%",
         filter: "blur(0px)",
-        transition: { type: 'ease-in', duration: 0.8, delay: 1.8}
-    },
-    button_2: {
-        opacity: 1,
-        scale: 1,
-        y: "0%",
-        filter: "blur(0px)",
-        transition: { type: 'ease-in', duration: 0.8, delay: 2}
-    },
+        transition: { type: 'ease-in', duration: 0.8, delay: 1.2}
+    }
   }
 
 /* 
@@ -95,18 +88,30 @@ const HeroSection = () => {
                     Welcome to my portfolio! I am Fredrik, a passionate mobile and software developer. Through this platform, I invite you to explore my journey, projects, and other creative endeavors.
                 </motion.p>
                 <div className='place-self-center'>
-                    <Link to="contact" duration={3000} smooth={true}>
+                    <Link to="contact" duration={2000} smooth={true}>
                         <motion.button 
-                            variants={fadeAnimationVariants} initial={"initial_button"} animate={"button_1"} viewport={{once: "runOnce"}} 
-                            className='px-6 py-3 w-full md:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] hover:from-[#3a436d] hover:via-[#b45254] hover:to-[#ffbd71] text-white mr-4'>
+                            variants={fadeAnimationVariants} initial={"initial_button"} animate={"button"} viewport={{once: "runOnce"}} 
+                            whileHover={{
+                                borderColor: "#ae1b1e",
+                                boxShadow: `0px 0px 15px #ae1b1e`,
+                                transition: {duration: 0.2},
+                              }}
+                            transition={{ duration: 0.2}}
+                            className='px-6 py-3 w-full md:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] border border-[#121212] text-white mr-4'>
                             Get in contact
                         </motion.button>
                     </Link>
-                    
                     <motion.button variants={fadeAnimationVariants} 
-                        initial={"initial_button"} animate={"button_2"} viewport={{once: "runOnce"}} 
-                        className='px-1 py-1 w-full md:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] hover:from-[#3a436d] hover:via-[#b45254] hover:to-[#ffbd71] text-white mt-4'>
-                        <span className='block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2'>Download CV</span>
+                        initial={"initial_button"} animate={"button"} viewport={{once: "runOnce"}}
+                        whileHover={{
+                            borderColor: "#ae1b1e",
+                            boxShadow: `0px 0px 15px #ae1b1e`,
+                            transition: {duration: 0.2},
+                          }}
+                        transition={{ duration: 0.2 }}
+
+                        className='px-1 py-1 w-full md:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] border border-[#121212] text-white mt-4'>
+                        <span className='block bg-[#121212] rounded-full px-5 py-2'>Download CV</span>
                     </motion.button>
                 </div>
             </div>
