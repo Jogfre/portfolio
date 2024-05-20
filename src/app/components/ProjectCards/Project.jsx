@@ -15,8 +15,8 @@ const Project = ({ projectName, index }) => {
   })
   const smoothY = useSpring(scrollYProgress, {
     mass: 0.1,
-    stiffness: 80,
-    damping: 20,
+    stiffness: 90,
+    damping: 30,
     restDelta: 0.001
   });
 
@@ -31,8 +31,8 @@ const Project = ({ projectName, index }) => {
 
   const transform = useTransform(
     smoothY,
-    [-3, 4],
-    [enterFrom, exitTo],
+    [-2, 0.3, 0.7, 3],
+    [enterFrom, "0%", "0%", exitTo],
   )
 
   const isInView = useInView(targetRef, {amount: "all", margin: "10% 10% 10% 10%"}) 
@@ -76,17 +76,20 @@ const Project = ({ projectName, index }) => {
             <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
             <p className='mt-4 2xl:max-w-2xl max-w-xl m-auto 2xl:text-lg text-sm'>{data.description}</p>
 
-            <div className='button_container flex justify-around 2xl:mt-12 mt-6' >
+            <div className='button_container flex justify-around 2xl:mt-12 mt-6 select-none' >
                 <motion.div
                   whileHover={{ 
-                    scale: 1.15,
+                    scale: 1.1,
                     boxShadow: `0px 0px 8px ${colorHex}`,
                     transition: {duration: 0.2},
+                  }}
+                  whileTap={{
+                    scale: 0.9
                   }}
                   transition={{ duration: 0.2 }}
                   className={`group rounded-full p-1 2xl:border-2 border border-white hover:border-${highlightColor} transition-colors duration-200`}
                 >
-                  <a className={bracketIconFormat} onClick={(e) => {handeButtonClick(data.link, e)}}>Check out this project!</a>
+                  <a className={bracketIconFormat} onClick={(e) => {handeButtonClick(data.link, e)}}>Check it out!</a>
                 </motion.div>
             </div>
           </div>

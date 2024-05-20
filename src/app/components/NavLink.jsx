@@ -13,9 +13,12 @@ const NavLink = ( {href, title, offset}) => {
         textShadow: `0px 0px 8px #ffffff`,
         transition: {duration: 0.2},
       }}
+      whileTap={{
+        scale: 0.95,
+      }}
       transition={{ duration: 0.2 }}
       onClick={() => {scroller.scrollTo(href, {duration: 1000, smooth: true, offset: offset})}}
-      className='block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded hover:text-white cursor-pointer'
+      className='block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded hover:text-white cursor-pointer select-none'
     > 
     {title}
 

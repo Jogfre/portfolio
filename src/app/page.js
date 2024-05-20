@@ -5,6 +5,7 @@ import ContactSection from "./Pages/ContactSection";
 import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
+import NewNavBar from "./components/NewNavBar";
 import { useEffect } from "react";
 
 
@@ -22,7 +23,7 @@ export default function Home() {
             lenisOptions: {
                 wrapper: window,
                 content: document.documentElement,
-                lerp: 0.12,
+                lerp: 0.1,
                 orientation: 'vertical',
                 gestureOrientation: 'vertical',
                 smoothWheel: true,
@@ -41,7 +42,7 @@ export default function Home() {
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
       <NavBar />
-        <div className="container mx-auto  mt-2 md:mt-24 pt-12">
+        <div className="container mx-auto  mt-2 lg:mt-24 pt-12 px-3 md:px-10">
           <HeroSection />
           <AboutSection />
           <ProjectSection />

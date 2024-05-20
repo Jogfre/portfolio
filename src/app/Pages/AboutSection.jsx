@@ -84,8 +84,15 @@ const AboutSection = () => {
 
   return (
     <section className='text-white min-h-screen ba' name="about">
-      <div className='md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
-        <motion.img className='rounded-xl w-2/3 md:w-[500px]' variants={fadeAnimationVariants} initial={"initial_picture"} whileInView={"animate_picture"} viewport={{once: "runOnce", amount: 0.25}} src={"/images/AboutMePhoto.jpg"} alt="about image"/>
+      <div className='lg:grid lg:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
+        <motion.img 
+          className='rounded-xl w-2/3 lg:w-[500px] pointer-events-none'
+          variants={fadeAnimationVariants}
+          initial={"initial_picture"}
+          whileInView={"animate_picture"}
+          viewport={{once: "runOnce", amount: 0.25}}
+          src={"/images/AboutMePhoto.jpg"}
+          alt="about image"/>
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <motion.h2 variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce", amount: 0.5}} className='text-4xl font-bold my-4'>
             About Me

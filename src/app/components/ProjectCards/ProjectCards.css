@@ -30,7 +30,7 @@
     background-color: white;
     border-width: 3px;
     overflow: hidden;
-    
+    user-select: none;
 }
 .small-card { 
     width: 12vmin;
@@ -40,6 +40,7 @@
     background-color: white;
     border-width: 1px;
     transform: translate(75%, 75%);
+    user-select: none;
 }
 
 
