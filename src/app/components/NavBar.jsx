@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import NavLink from './NavLink'
-import { motion, useInView, AnimatePresence, delay } from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import Image from "next/image"
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
@@ -13,7 +13,7 @@ const floatingNavBarAnimations = {
       opacity: 1,
       transition: {
       y: { velocity: 100 },
-      duration: 0.5,
+      duration: 0.4,
       }
   },
   hidden: {
@@ -21,14 +21,19 @@ const floatingNavBarAnimations = {
       opacity: 0.6,
       transition: {
       y: { velocity: 100 },
-      duration: 1,
+      duration: 0.4,
       }
   }
 };
 
-const NewNavBar = ({scaleFactor}) => {
+
+
+
+
+const NavBar = ({progressValue}) => {
   const targetRef = useRef(null)
   const isInView = useInView(targetRef) 
+  const [activeTitle, setActiveTitle] = useState("Home")
 
   const navLinks = [
     {title: "Home", path: "home", offset: 0},
@@ -37,12 +42,28 @@ const NewNavBar = ({scaleFactor}) => {
     {title: "Contact", path: "contact", offset: 0},
   ]
 
+  const titles = navLinks.map((navLink) => navLink.title)
+  const dividers = 100 / (navLinks.length + 1)
+
+  const getActiveTitle = (progressValue) => {
+    var titleIndex = Math.round((progressValue * 100)/ dividers) - 1
+    if (titleIndex < 0) {titleIndex = 0}
+    if (titleIndex > navLinks.length - 1) {titleIndex = navLinks.length -1}
+
+
+    return titles[titleIndex]
+  }
+
+  useEffect(() => {
+    setActiveTitle(getActiveTitle(progressValue))
+  }, [progressValue])
+
   return (
     <div 
       className='navbar_container left-0 top-0 z-20 relative' ref={targetRef}
     >
       
-      <MenuButton links={navLinks}/>
+      <MenuButton links={navLinks} activeTitle={activeTitle}/>
       <motion.div 
         className='h-16 justify-between items-center hidden md:flex lg:px-16 px-8 bg-[#202020]'
         initial={{
@@ -54,7 +75,7 @@ const NewNavBar = ({scaleFactor}) => {
           opacity: 1,
           scale: 1,
           y: "0%",
-          transition: { type: 'ease-in', duration: 0.4}
+          transition: { type: 'ease-in', duration: 0.6}
         }}
         viewport={{once: "runOnce"}}
       >
@@ -69,7 +90,7 @@ const NewNavBar = ({scaleFactor}) => {
           {
             navLinks.map((link, index) => (
               <li key={index}>
-                  <NavLink href={link.path} title={link.title} offset={link.offset}/>
+                  <NavLink href={link.path} title={link.title} offset={link.offset} activeTitle={"none"}/>
               </li>
             ))
           }
@@ -88,7 +109,7 @@ const NewNavBar = ({scaleFactor}) => {
                 variants={floatingNavBarAnimations}
                 className='w-screen h-16 mx-auto hidden md:flex'
               >
-                <FloatingNavBar navLinks={navLinks} scaleFactor={scaleFactor} isInView={isInView}/>
+                <FloatingNavBar navLinks={navLinks} progressValue={progressValue} isInView={isInView} activeTitle={activeTitle}/>
               </motion.div>
           )}
         </AnimatePresence>
@@ -97,4 +118,4 @@ const NewNavBar = ({scaleFactor}) => {
   )
 }
 
-export default NewNavBar
+export default NavBar

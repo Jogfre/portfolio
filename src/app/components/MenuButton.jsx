@@ -37,7 +37,7 @@ const navTextAnimations = {
 
 
 
-const MenuButton = ( {links} ) => {
+const MenuButton = ( {links, activeTitle} ) => {
 
     const [isOpen, setIsOpen] = useState(false)
     
@@ -80,7 +80,7 @@ const MenuButton = ( {links} ) => {
                             animate={isOpen ? "animate" : "initial"}
                             custom={index}
                             >
-                                <NavLink href={link.path} title={link.title} offset={link.offset}/>
+                                <NavLink href={link.path} title={link.title} offset={link.offset} activeTitle={activeTitle}/>
                             </motion.li>
                         ))
                     }

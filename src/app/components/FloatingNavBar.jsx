@@ -4,15 +4,16 @@ import PropTypes from "prop-types";
 import { motion } from 'framer-motion'
 
 
-const FloatingNavBar = ( {navLinks, scaleFactor, isInView} ) => {
+
+const FloatingNavBar = ( {navLinks, progressValue, isInView, activeTitle} ) => {
   
   return (
-    <div className='z-50 flex justify-around relative items-center px-1 w-fit h-12 rounded-full mx-auto opacity-80 hover:opacity-100 transition-opacity duration-300 pointer-events-auto bg-[#1f1f1f] overflow-hidden'>
+    <div className='z-50 flex justify-around relative items-center px-1 w-fit h-12 rounded-full mx-auto opacity-90 hover:opacity-100 transition-opacity duration-300 pointer-events-auto bg-[#1f1f1f] overflow-hidden'>
       <ul className='flex p-0 flex-row lg:space-x-12 space-x-8 lg:text-xl text-lg z-10 bg-[#202020] lg:px-12 px-8 rounded-full py-2'>
         {
           navLinks.map((link, index) => (
             <li key={index}>
-                <NavLink href={link.path} title={link.title} offset={link.offset}/>
+                <NavLink href={link.path} title={link.title} offset={link.offset} activeTitle={activeTitle}/>
             </li>
           ))
         }
@@ -34,7 +35,7 @@ const FloatingNavBar = ( {navLinks, scaleFactor, isInView} ) => {
             transition: {duration: 0.6}
           },
       }}
-        style={{ scaleX: scaleFactor * 100 +"%", transformOrigin: '0%' }} 
+        style={{ scaleX: progressValue * 100 +"%", transformOrigin: '0%' }} 
         />
     </div>
   );

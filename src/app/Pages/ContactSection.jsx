@@ -42,7 +42,7 @@ const ContactSection = ({scaleHook}) => {
 
   const scalerX = useTransform(
     scrollYProgress,
-    [0, 0.5],
+    [0.2, 0.5],
     [0, 0.3],
   )
 

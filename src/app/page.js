@@ -22,8 +22,6 @@ export default function Home() {
   useEffect(() => {
     const sum = heroScale + aboutScale + projectScale + contactScale
     setTotalScale(sum);
-    console.log("Scales: T[", sum, "], H[", heroScale, "], A[", aboutScale, "], P[", projectScale, "], C[", contactScale, "]")
-
   }, [heroScale, aboutScale, projectScale, contactScale])
 
 
@@ -54,7 +52,7 @@ export default function Home() {
 
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
-      <NavBar scaleFactor={totalScale}/>
+      <NavBar progressValue={totalScale}/>
         <div className="container mx-auto  mt-2 lg:mt-24 pt-12 px-3 md:px-10">
           <HeroSection scaleHook={setHeroScale}/>
           <AboutSection scaleHook={setAboutScale}/>
