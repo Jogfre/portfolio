@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react'
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform, useMotionValueEvent, useSpring } from "framer-motion";
 import Project from '../components/ProjectCards/Project.jsx';
 
 const fadeAnimationVariants = {
@@ -26,10 +26,30 @@ const projects = [
   "Photoshop",
 ]
 
-const ProjectPage = () => {
+const ProjectPage = ({scaleHook}) => {
+
+  const targetRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+      target: targetRef,
+      offset: ["start end", "end start"],
+  })
+  const scale = useTransform(
+      scrollYProgress,
+      [0, 1],
+      [0, 0.25],
+  )
+
+  const smoothScale = useSpring(scale, {
+    stiffness: 70,
+    damping: 15,
+  })
+
+  useMotionValueEvent(smoothScale, "change", (latest) => {
+      scaleHook(latest)
+  })
 
   return (
-    <section name="projects" className='text-white min-h-screen justify-center mt-10 mb-40'>
+    <section name="projects" className='text-white min-h-screen justify-center mt-10 mb-40' ref={targetRef}>
       
       <motion.h1 
         variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{ once: "runOnce", amount: 0.5 }} 

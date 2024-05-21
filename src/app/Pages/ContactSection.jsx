@@ -1,6 +1,6 @@
 "use client"
 import { React, useRef } from 'react'
-import { motion, useTransform, useScroll, useSpring } from 'framer-motion'
+import { motion, useTransform, useScroll, useSpring, useMotionValueEvent } from 'framer-motion'
 import Image from "next/image";
 
 import GitHubIcon from '../../../public/icons/github_icon.svg'
@@ -10,7 +10,7 @@ import EmailCard from '../components/EmailCard';
 
 
 
-const ContactSection = () => {
+const ContactSection = ({scaleHook}) => {
 
   const targetRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -38,6 +38,23 @@ const ContactSection = () => {
     [0, 0.4],
     ["60%", "0%"],
   )
+
+
+  const scalerX = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    [0, 0.3],
+  )
+
+  const smoothScalerX = useSpring(scalerX, {
+    stiffness: 100,
+    damping: 20,
+  })
+  
+  useMotionValueEvent(smoothScalerX, "change", (latest) => {
+      scaleHook(latest)
+  })
+  
 
 
 

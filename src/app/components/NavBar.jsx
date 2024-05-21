@@ -1,7 +1,7 @@
 "use client";
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import NavLink from './NavLink'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, useInView, AnimatePresence, delay } from 'framer-motion'
 import Image from "next/image"
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
@@ -18,15 +18,15 @@ const floatingNavBarAnimations = {
   },
   hidden: {
       y: "-100%",
-      opacity: 0,
+      opacity: 0.6,
       transition: {
       y: { velocity: 100 },
-      duration: 0.5,
+      duration: 1,
       }
   }
 };
 
-const NewNavBar = () => {
+const NewNavBar = ({scaleFactor}) => {
   const targetRef = useRef(null)
   const isInView = useInView(targetRef) 
 
@@ -39,27 +39,9 @@ const NewNavBar = () => {
 
   return (
     <div 
-      className='navbar_container left-0 top-0 z-50 relative' ref={targetRef}
+      className='navbar_container left-0 top-0 z-20 relative' ref={targetRef}
     >
       
-      <div 
-        className='fixed top-2 my-auto'
-        style={{pointerEvents: isInView ? "all" : "none"}}
-      >
-        <AnimatePresence>
-          {!isInView && (
-                <motion.div
-                initial="hidden"
-                animate={!isInView ? "visible" : "hidden"}
-                exit="hidden"
-                variants={floatingNavBarAnimations}
-                className='w-screen h-16 mx-auto hidden md:flex'
-              >
-                <FloatingNavBar navLinks={navLinks}/>
-              </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
       <MenuButton links={navLinks}/>
       <motion.div 
         className='h-16 justify-between items-center hidden md:flex lg:px-16 px-8 bg-[#202020]'
@@ -93,6 +75,24 @@ const NewNavBar = () => {
           }
         </ul>
       </motion.div>
+      <div 
+        className='fixed top-2 my-auto'
+        style={{pointerEvents: isInView ? "all" : "none"}}
+      >
+        <AnimatePresence>
+          {!isInView && (
+                <motion.div
+                initial="hidden"
+                animate={!isInView ? "visible" : "hidden"}
+                exit="hidden"
+                variants={floatingNavBarAnimations}
+                className='w-screen h-16 mx-auto hidden md:flex'
+              >
+                <FloatingNavBar navLinks={navLinks} scaleFactor={scaleFactor} isInView={isInView}/>
+              </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 }

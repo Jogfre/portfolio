@@ -5,11 +5,26 @@ import ContactSection from "./Pages/ContactSection";
 import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 
 export default function Home() {  
+
+  const [heroScale, setHeroScale] = useState(0)
+  const [aboutScale, setAboutScale] = useState(0)
+  const [projectScale, setProjectScale] = useState(0)
+  const [contactScale, setContactScale] = useState(0)
+
+  const [totalScale, setTotalScale] = useState(0)
+
+
+  useEffect(() => {
+    const sum = heroScale + aboutScale + projectScale + contactScale
+    setTotalScale(sum);
+    console.log("Scales: T[", sum, "], H[", heroScale, "], A[", aboutScale, "], P[", projectScale, "], C[", contactScale, "]")
+
+  }, [heroScale, aboutScale, projectScale, contactScale])
 
 
   // Initialize the smooth scroll component from LocomotiveScroll. Has to be done on client render and not server render
@@ -39,12 +54,12 @@ export default function Home() {
 
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
-      <NavBar />
+      <NavBar scaleFactor={totalScale}/>
         <div className="container mx-auto  mt-2 lg:mt-24 pt-12 px-3 md:px-10">
-          <HeroSection />
-          <AboutSection />
-          <ProjectSection />
-          <ContactSection />
+          <HeroSection scaleHook={setHeroScale}/>
+          <AboutSection scaleHook={setAboutScale}/>
+          <ProjectSection scaleHook={setProjectScale}/>
+          <ContactSection scaleHook={setContactScale}/>
         </div>
     </main>
   );

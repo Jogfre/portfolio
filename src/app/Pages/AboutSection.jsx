@@ -1,7 +1,7 @@
 "use client";
-import { React, useState, useTransition } from 'react'
+import { React, useState, useRef, useTransition } from 'react'
 import TabButton from '../components/TabButton';
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, useTransform, useSpring } from 'framer-motion'
 
 const TAB_DATA = [
   {
@@ -71,7 +71,7 @@ const fadeAnimationVariants = {
 }
   
 
-const AboutSection = () => {
+const AboutSection = ({scaleHook}) => {
 
   const[tab, setTab] = useState("skills");
   const [isPending, startTransition] = useTransition();
@@ -82,8 +82,31 @@ const AboutSection = () => {
     })
   }
 
+
+
+  const targetRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+      target: targetRef,
+      offset: ["start end", "end start"],
+  })
+  const scale = useTransform(
+      scrollYProgress,
+      [0, 1],
+      [0, 0.25],
+  )
+  const smoothScale = useSpring(scale, {
+    stiffness: 70,
+    damping: 15,
+  })
+
+  useMotionValueEvent(smoothScale, "change", (latest) => {
+      scaleHook(latest)
+  })
+
+
+
   return (
-    <section className='text-white min-h-screen ba' name="about">
+    <section className='text-white min-h-screen ba' name="about" ref={targetRef}>
       <div className='lg:grid lg:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
         <motion.img 
           className='rounded-xl w-2/3 lg:w-[500px] pointer-events-none'

@@ -38,10 +38,10 @@ const AnimatedHamburgerIcon = ( {state} ) => {
                 }}
                 variants={{
                     open: {
-                        opacity: 0
+                        scale: 0
                     },
                     closed: {
-                        opacity: 1
+                        scale: 1
                     }
                 }}
                 className='absolute h-[5%] w-[60%] bg-slate-200'/>
