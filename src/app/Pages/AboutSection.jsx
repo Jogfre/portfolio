@@ -2,7 +2,6 @@
 import { React, useState, useTransition } from 'react'
 import TabButton from '../components/TabButton';
 import { motion } from "framer-motion";
-import { Element } from 'react-scroll';
 
 const TAB_DATA = [
   {
@@ -35,8 +34,9 @@ const TAB_DATA = [
     id: "hobbies",
     content: (
       <ul className='list-disc pl-2'>
-        <li>Playing Piano</li>
         <li>Board Games</li>
+        <li>Playing Piano</li>
+        <li>Building Lego</li>
         <li>Cyber Security / Hacking</li>
         <li>Computer Vision</li>
       </ul>

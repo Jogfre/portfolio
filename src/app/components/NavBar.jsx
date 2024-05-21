@@ -1,57 +1,100 @@
 "use client";
-import Link from 'next/link'
-import React, {useState} from 'react'
+import React, { useRef } from 'react'
 import NavLink from './NavLink'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import Image from "next/image"
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid" 
-import MenuOverlay from './MenuOverlay';
+import FloatingNavBar from './FloatingNavBar';
+import MenuButton from './MenuButton';
 
-const navLinks = [
+
+const floatingNavBarAnimations = {
+  visible: {
+      y: "0%",
+      opacity: 1,
+      transition: {
+      y: { velocity: 100 },
+      duration: 0.5,
+      }
+  },
+  hidden: {
+      y: "-100%",
+      opacity: 0,
+      transition: {
+      y: { velocity: 100 },
+      duration: 0.5,
+      }
+  }
+};
+
+const NewNavBar = () => {
+  const targetRef = useRef(null)
+  const isInView = useInView(targetRef) 
+
+  const navLinks = [
     {title: "Home", path: "home", offset: 0},
     {title: "About", path: "about", offset: -40},
     {title: "Projects", path: "projects", offset: -40},
     {title: "Contact", path: "contact", offset: 0},
-]
+  ]
 
-
-const NavBar = () => {
-    const [navbarOpen, setnavbarOpen] =  useState(false);
-
-    return (
-        <nav className='fixed top-0 left-0 right-0 z-10 bg-[#202020] bg-opacity-90 py-1'>
-            <div className='flex items-center justify-between mx-auto px-8'>
-                
-                <Link href={"/"} className='text-3xl md:text-5xl'>
-                    <Image 
-                            src="/images/Icon.png"
-                            alt="Logo image"
-                            width={45}
-                            height={45}
-                        />
-                </Link>
-                <div className='larger-menu menu hidden md:block md:w-auto id="navbar'>
-                    <ul className='flex p-0 md:p-0 md:flex-row md:space-x-8'>
-                        {
-                            navLinks.map((link, index) => (
-                                <li key={index}>
-                                    <NavLink href={link.path} title={link.title} offset={link.offset}/>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-
-                <div className='mobile-menu menu block md:hidden'>
-                    {navbarOpen ? (
-                        <button onClick={() => setnavbarOpen(false)} className='flex items-center px-3 py-2  border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white'> <XMarkIcon className='size-5'/> </button>
-                    ) : (
-                        <button onClick={() => setnavbarOpen(true)} className='flex items-center px-3 py-2  border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white'> <Bars3Icon className='size-5'/> </button>
-                    )}
-                </div>
-            </div>
-            {navbarOpen ? <MenuOverlay links={navLinks}/> : null}
-        </nav>
-    )
+  return (
+    <div 
+      className='navbar_container left-0 top-0 z-50 relative' ref={targetRef}
+    >
+      
+      <div 
+        className='fixed top-2 my-auto'
+        style={{pointerEvents: isInView ? "all" : "none"}}
+      >
+        <AnimatePresence>
+          {!isInView && (
+                <motion.div
+                initial="hidden"
+                animate={!isInView ? "visible" : "hidden"}
+                exit="hidden"
+                variants={floatingNavBarAnimations}
+                className='w-screen h-16 mx-auto hidden md:flex'
+              >
+                <FloatingNavBar navLinks={navLinks}/>
+              </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      <MenuButton links={navLinks}/>
+      <motion.div 
+        className='h-16 justify-between items-center hidden md:flex lg:px-16 px-8 bg-[#202020]'
+        initial={{
+          opacity: 0,
+          y: "-50%",
+          scale: 1,
+        }}
+        animate = {{
+          opacity: 1,
+          scale: 1,
+          y: "0%",
+          transition: { type: 'ease-in', duration: 0.4}
+        }}
+        viewport={{once: "runOnce"}}
+      >
+        <Image
+          className='pointer-events-none'
+          src="/images/Icon.png"
+          alt="Logo image"
+          width={45}
+          height={45}
+        />
+        <ul className='flex p-0 flex-row lg:space-x-12 space-x-8 lg:text-xl text-lg'>
+          {
+            navLinks.map((link, index) => (
+              <li key={index}>
+                  <NavLink href={link.path} title={link.title} offset={link.offset}/>
+              </li>
+            ))
+          }
+        </ul>
+      </motion.div>
+    </div>
+  )
 }
 
-export default NavBar
+export default NewNavBar

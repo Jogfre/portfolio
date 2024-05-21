@@ -5,13 +5,11 @@ import ContactSection from "./Pages/ContactSection";
 import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
-import NewNavBar from "./components/NewNavBar";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 
 
 export default function Home() {  
-
 
 
   // Initialize the smooth scroll component from LocomotiveScroll. Has to be done on client render and not server render
