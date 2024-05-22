@@ -10,7 +10,7 @@ const AnimatedHamburgerIcon = ( {state} ) => {
         }}
     >
         <motion.div 
-            className='relative h-full w-full border-2 bg-[#202020] border-slate-200 rounded-xl'
+            className='relative h-full w-full border-2 bg-[#202020] border-slate-400 rounded-xl'
             animate ={state ?  "open" : "closed"}
             >
             
@@ -30,7 +30,7 @@ const AnimatedHamburgerIcon = ( {state} ) => {
                         top: "33%",
                     }
                 }}
-                className='absolute h-[5%] w-[60%] bg-slate-200'/>
+                className='absolute h-[5%] w-[60%] bg-slate-400'/>
             
             <motion.span
                 style={{
@@ -44,7 +44,7 @@ const AnimatedHamburgerIcon = ( {state} ) => {
                         scale: 1
                     }
                 }}
-                className='absolute h-[5%] w-[60%] bg-slate-200'/>
+                className='absolute h-[5%] w-[60%] bg-slate-400'/>
             
             <motion.span
                 style={{
@@ -62,7 +62,7 @@ const AnimatedHamburgerIcon = ( {state} ) => {
                         top: "66%",
                     }
                 }}
-                className='absolute h-[5%] w-[60%] bg-slate-200'/>
+                className='absolute h-[5%] w-[60%] bg-slate-400'/>
 
         </motion.div>
     </MotionConfig>

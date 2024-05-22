@@ -56,7 +56,23 @@ const MenuButton = ( {links, activeTitle} ) => {
             onClick={() => setIsOpen(false)}
         >
             <div className='fixed top-0 left-0 w-full h-full bg-black transition-opacity duration-300' style={{opacity: isOpen ? 0.5 : 0}}/>
-            <div className='md:hidden h-fit w-[100px] fixed flex flex-col items-center right-0 z-50'>
+            <motion.div className='md:hidden h-fit w-[100px] fixed flex flex-col items-center right-0 z-50'
+                initial={{
+                    opacity: 0,
+                    y: "-20%",
+                    scale: 1,
+                    filter: "blur(10px)",
+                    }}
+                animate = {{
+                    opacity: 1,
+                    scale: 1,
+                    y: "0%",
+                    filter: "blur(0px)",
+                    transition: { type: 'ease-in', duration: 0.6}
+                }}
+                viewport={{once: "runOnce"}}
+            
+            >
                     <motion.button 
                         className='md:hidden h-10 w-10 mt-3 overflow-hidden pointer-events-auto'
                         whileTap={{ scale: 0.95}}
@@ -64,7 +80,7 @@ const MenuButton = ( {links, activeTitle} ) => {
                             <AnimatedHamburgerIcon state={isOpen}/>
                     </motion.button>
                 <motion.ul
-                    className='w-full h-[200px] bg-[#202020] opacity-90 flex flex-col justify-around text-center mt-2 rounded-xl border border-slate-200'
+                    className='w-full h-[200px] bg-[#202020] opacity-90 flex flex-col justify-around text-center mt-2 rounded-xl border border-slate-400'
                     variants={menuAnimations}
                     initial="initial"
                     animate={isOpen ? "animate" : "initial "}
@@ -86,7 +102,7 @@ const MenuButton = ( {links, activeTitle} ) => {
                     }
                 </ motion.ul>
 
-            </div>
+            </motion.div>
         </div>
   )
 }
