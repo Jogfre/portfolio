@@ -36,7 +36,7 @@ const ProjectPage = ({scaleHook}) => {
   const scale = useTransform(
       scrollYProgress,
       [0, 1],
-      [0, 0.25],
+      [0, 0.20],
   )
 
   const smoothScale = useSpring(scale, {
