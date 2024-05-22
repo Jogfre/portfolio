@@ -93,7 +93,7 @@ const Project = ({ projectName, index }) => {
                 </motion.div>
             </div>
           </div>
-          <div className= 'flex justify-center pb-8'>
+          <div className= 'flex justify-center'>
             <ProjectCards projectName={projectName} iconData={data.icons} isOpen={isInView}/>
           </div>
       </motion.div>

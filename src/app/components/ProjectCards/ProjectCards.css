@@ -1,24 +1,27 @@
 .open-card-container,
 .card {
     width: 30vmin;
+    max-width: 250px;
     aspect-ratio: 5 / 7;
     transition: transform 500ms ease-in-out;
-    overflow: hidden;
+    position: relative;
 }
 
 
 .card-container,
 .card {
     width: 30vmin;
+    max-width: 250px;
     aspect-ratio: 5 / 7;
     transition: transform 500ms ease-in-out;
-    overflow: hidden;
+    position: relative;
 }
 
 .card {
     aspect-ratio: 5 / 7;
     background-color: rgba(255, 255, 255, 1);
     position: absolute;
+    transform: (50%, 50%);
     border-color: #161616;
     border-style: solid;
     
@@ -64,18 +67,18 @@
 }
 
 .open-card-container > .big-card:nth-child(2) {
-    transform: translate(-75%, 16%) rotate(-24deg);
+    transform: translate(-75%, 10%) rotate(-24deg);
 }
 .open-card-container > .big-card:nth-child(4) {
-    transform: translate(-25%, 8%) rotate(-8deg);
+    transform: translate(-25%, 2%) rotate(-8deg);
 }
 
 .open-card-container > .big-card:nth-child(6) {
-    transform: translate(25%, 8%) rotate(8deg);
+    transform: translate(25%, 2%) rotate(8deg);
 }
 
 .open-card-container > .big-card:nth-child(8) {
-    transform: translate(75%, 16%) rotate(24deg);
+    transform: translate(75%, 10%) rotate(24deg);
 }
 
 
@@ -85,17 +88,17 @@
 */
 
 .open-card-container > .small-card:nth-child(1) {
-    transform: translate(220%, -60%) rotate(-15deg);
+    transform: translate(220%, -66%) rotate(-15deg);
 }
 
 .open-card-container > .small-card:nth-child(3) {
-    transform: translate(300%, 265%) rotate(10deg);
+    transform: translate(300%, 259%) rotate(10deg);
 }
 
 .open-card-container > .small-card:nth-child(5) {
-    transform: translate(-120%, -60%) rotate(15deg);
+    transform: translate(-120%, -66%) rotate(15deg);
 }
 
 .open-card-container > .small-card:nth-child(7) {
-    transform: translate(-160%, 260%) rotate(-10deg);
+    transform: translate(-160%, 254%) rotate(-10deg);
 }
