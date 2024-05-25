@@ -79,7 +79,7 @@ const HeroSection = ({scaleHook}) => {
                         className='text-white mb-4 text-2xl lg:text-4xl xl:text-5xl font-extrabold'
                         >
                         <span 
-                            className='text-3xl lg:text-5xl xl:text-6xl 2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-[#2543da] via-[#d83e40] to-[#db7500]'
+                            className='text-4xl lg:text-5xl xl:text-6xl 2xl:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-[#2543da] via-[#d83e40] to-[#db7500]'
                         >
                             Hello, I am
                         </span>
@@ -142,14 +142,14 @@ const HeroSection = ({scaleHook}) => {
                         </motion.button>
                     </div>
                 </div>
-                <motion.div variants={fadeAnimationVariants} initial={"initial_avatar"} animate={"animate_entry"} viewport={{once: "runOnce"}} className='col-span-5 place-self-center pt-4 lg:mt-0'>
-                    <div className='rounded-full bg-gradient-to-b from-[#1F1F1F] to-[#080808] w-[340px] h-[340px] border-4 border-[#1f1f1f] relative overflow-hidden'>
+                <motion.div variants={fadeAnimationVariants} initial={"initial_avatar"} animate={"animate_entry"} viewport={{once: "runOnce"}} className='lg:order-last lg:mb-0 mb-4 order-first col-span-5 place-self-center pt-4 lg:mt-0'>
+                    <div className='rounded-full bg-gradient-to-b from-[#1F1F1F] to-[#080808] xl:w-[400px] xl:h-[400px] sm:w-[300px] sm:h-[300px] w-[240px] h-[240px] border-4 border-[#1f1f1f] relative overflow-hidden'>
                         <Image 
                             src="/images/ProfilePhoto_Transparent.png"
                             alt="hero image"
-                            className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 select-none pointer-events-none'
-                            width={300}
-                            height={300}
+                            className='absolute transform select-none pointer-events-none mt-5'
+                            fill
+                            style={{objectFit: "contain"}}
                         />
                     </div>
                 </motion.div>

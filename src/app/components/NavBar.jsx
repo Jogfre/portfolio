@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useMemo } from 'react'
 import NavLink from './NavLink'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import Image from "next/image"
@@ -35,28 +35,25 @@ const NavBar = ({progressValue}) => {
   const isInView = useInView(targetRef) 
   const [activeTitle, setActiveTitle] = useState("Home")
 
-  const navLinks = [
+
+  const navLinks = useMemo(() => [
     {title: "Home", path: "home", offset: 0},
     {title: "About", path: "about", offset: -40},
-    {title: "Projects", path: "projects", offset: -40},
+    {title: "Projects", path: "projects", offset: -20},
     {title: "Contact", path: "contact", offset: 0},
-  ]
+  ], []);
 
-  const titles = navLinks.map((navLink) => navLink.title)
-  const dividers = 100 / (navLinks.length + 1)
+  useEffect(() => {
+    const titles = navLinks.map((navLink) => navLink.title) // Get the titles and where the dividers for the sections on the navbar should be
+    const dividers = 100 / (navLinks.length + 1)
 
-  const getActiveTitle = (progressValue) => {
-    var titleIndex = Math.round((progressValue * 100)/ dividers) - 1
+    var titleIndex = Math.round((progressValue * 100)/ dividers) - 1 // compute the new activeTitle
     if (titleIndex < 0) {titleIndex = 0}
     if (titleIndex > navLinks.length - 1) {titleIndex = navLinks.length -1}
 
+    setActiveTitle(titles[titleIndex]) // set the new activeTitle for the navbar highlight
 
-    return titles[titleIndex]
-  }
-
-  useEffect(() => {
-    setActiveTitle(getActiveTitle(progressValue))
-  }, [progressValue])
+  }, [progressValue, navLinks])
 
   return (
     <div 

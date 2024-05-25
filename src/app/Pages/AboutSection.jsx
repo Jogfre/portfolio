@@ -164,7 +164,7 @@ const AboutSection = ({scaleHook}) => {
             Hobbies
             </TabButton>
           </motion.div>
-          <motion.div variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className="mt-8 min-h-44">
+          <motion.div variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className="mt-4 min-h-44">
             {TAB_DATA.find((t) => t.id === tab).content}
           </motion.div>
         </div>

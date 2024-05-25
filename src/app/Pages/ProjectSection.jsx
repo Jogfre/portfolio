@@ -53,12 +53,12 @@ const ProjectPage = ({scaleHook}) => {
       
       <motion.h1 
         variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{ once: "runOnce", amount: 0.5 }} 
-        className='text-4xl md:text-6xl align-middle text-center font-bold pb-0 md:pb-12 pt-14 md:pt-16 2xl:mb-10'>
+        className='text-4xl md:text-6xl align-middle text-center font-bold pb-8 md:pb-12 pt-14 md:pt-16 2xl:mb-10'>
           Projects
       </motion.h1>
       
       {projects.map((projectName, index) => (
-        <div className='md:mb-20 mb-14' key={index}>
+        <div className='md:mb-36 sm:mb-32 min-[320px]:mb-24 mb-14' key={index}>
           <Project projectName={projectName} index={index} key={index}/>
         </div>
       ))}
