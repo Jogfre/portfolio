@@ -16,45 +16,53 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
     return (
         <div className={isOpen ? "open-card-container" : "card-container"}>
 
-            <div className="small-card card" style={iconLen >= 3 ? {opacity: 1} : {opacity: 0}} >
+            {iconLen >= 3 ? <div className="small-card card">
                 <Image 
                         src={`/icons/${icon3}.svg`}
-                        alt={`${projectName} icon 3`}
-                        className='pointer-events-none '
+                        alt={`${projectName} icon 2`}
+                        className='pointer-events-none p-1'
                         fill
+                        style={{objectFit: "contain"}}
                 />   
-            </div>
+            </div> : <div/>}
+
             <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img4.jpg)`, backgroundSize: "cover" }} />
 
-            <div className="small-card card" style={iconLen >= 4 ? {opacity: 1} : {opacity: 0}} >
+            {iconLen >= 4 ? <div className="small-card card">
                 <Image 
                         src={`/icons/${icon4}.svg`}
-                        alt={`${projectName} icon 4`}
-                        className='pointer-events-none'
+                        alt={`${projectName} icon 2`}
+                        className='pointer-events-none p-1'
                         fill
+                        style={{objectFit: "contain"}}
                 />   
-            </div>
+            </div> : <div/>}
+            
             <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img3.jpg)`, backgroundSize: "cover" }} />
 
-            <div className="small-card card" style={iconLen >= 1 ? {opacity: 1} : {opacity: 0}} >
+            {iconLen >= 1 ? <div className="small-card card">
                 <Image 
                         src={`/icons/${icon1}.svg`}
-                        alt={`${projectName} icon 1`}
-                        className='pointer-events-none'
+                        alt={`${projectName} icon 2`}
+                        className='pointer-events-none p-1'
                         fill
+                        style={{objectFit: "contain"}}
                 />   
-            </div>
+            </div> : <div/>}
+
             <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img2.jpg)`, backgroundSize: "cover" }} />
 
             
-            <div className="small-card card" style={iconLen >= 2 ? {opacity: 1} : {opacity: 0}} >
+            {iconLen >= 2 ? <div className="small-card card">
                 <Image 
                         src={`/icons/${icon2}.svg`}
                         alt={`${projectName} icon 2`}
-                        className='pointer-events-none'
+                        className='pointer-events-none p-1'
                         fill
+                        style={{objectFit: "contain"}}
                 />   
-            </div>
+            </div> : <div/>}
+
             <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img1.jpg)`, backgroundSize: "cover" }} />
 
         </div>

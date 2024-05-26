@@ -53,7 +53,7 @@ const Project = ({ projectName, index }) => {
   const colorHex = colors[index % 3]
   const highlightColor = `[${colorHex}]`
 
-  const containerFormat = `${ enterFromRight ? 'flex-row-reverse 2xl:pl-44' : '2xl:pr-44' } ${ isInView ? 'shadow-lg' : '' } shadow-${highlightColor} max-xl:flex-col max-2xl:mx-5 items-center justify-center 2xl:flex 2xl:justify-between place-items-center 2xl:mt-0 mt-4 py-4 2xl:py-20 bg-[#1f1f1f] 2xl:px-10 2xl:pb-24 pb-18 rounded-xl 2xl:mb-44 mb-0 transition-shadow duration-500 2xl:max-h-[550px] content-center`
+  const containerFormat = `${ enterFromRight ? 'flex-row-reverse 2xl:pl-44' : '2xl:pr-44' } ${ isInView ? 'shadow-lg' : '' } shadow-${highlightColor} max-xl:flex-col max-2xl:mx-5 items-center justify-center 2xl:flex 2xl:justify-between place-items-center 2xl:mt-0 mt-4 py-4 2xl:py-20 bg-[#1f1f1f] 2xl:px-10 rounded-xl 2xl:my-22 my-0 transition-shadow duration-500 2xl:max-h-[550px] content-center`
   const bracketIconFormat = `2xl:h-20 2xl:w-20 h-10 w-10 p-2 rounded-full text-white transition-all duration-200 group-hover:text-${highlightColor} pointer-events-auto 2xl:text-lg text-sm cursor-pointer`
 
 
@@ -72,11 +72,11 @@ const Project = ({ projectName, index }) => {
         style={ {opacity: opacity, translateX: transform}}
         className={containerFormat}
         onClick={() => {scroller.scrollTo(`project_${index}`, {duration: 500, smooth: true, offset: -140})}}>
-          <div className='mx-5 flex-col md:pb-8 :pb-12 mb-8 2xl:mb-0 items-center align-middle text-center justify-center'>
+          <div className='mx-5 flex-col md:pb-8 pb-12 mb-8 2xl:mb-0 items-center align-middle text-center justify-center'>
             <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
             <p className='mt-4 2xl:max-w-2xl max-w-xl m-auto 2xl:text-lg text-sm'>{data.description}</p>
 
-            <div className='button_container flex justify-around 2xl:mt-12 mt-6 select-none' >
+            <div className='button_container flex justify-center 2xl:mt-12 mt-6 select-none align-middle items-center' >
                 <motion.div
                   whileHover={{ 
                     scale: 1.1,
@@ -84,12 +84,12 @@ const Project = ({ projectName, index }) => {
                     transition: {duration: 0.2},
                   }}
                   whileTap={{
-                    scale: 0.9
+                    scale: 0.95
                   }}
                   transition={{ duration: 0.2 }}
                   className={`group rounded-full p-1 2xl:border-2 border border-white hover:border-${highlightColor} transition-colors duration-200`}
                 >
-                  <a className={bracketIconFormat} onClick={(e) => {handeButtonClick(data.link, e)}}>Check it out!</a>
+                  <a className={bracketIconFormat} onClick={(e) => {handeButtonClick(data.link, e)}}>{data.button}</a>
                 </motion.div>
             </div>
           </div>

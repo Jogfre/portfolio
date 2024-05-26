@@ -2,5 +2,6 @@
     "title": "Fruit Spy",
     "description": "An app for your phone that attempts identify fruits and vegetables from an image, and also tries to determine their ripeness. Utilizing our own external server with REST API to handle the image recognition. Made for both Android and iOS.",
     "icons": ["expo", "react", "python", "tensorflow"],
-    "link": "https://github.com/henrisuurorg/fruit-detector"
+    "link": "https://github.com/henrisuurorg/fruit-detector",
+    "button": "View on Github"
 }

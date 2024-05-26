@@ -2,5 +2,6 @@
     "title": "SET Solver",
     "description": "An app for Android applications that through a live video feed from the camera, is able to find any cards on screen. Then once a button is pressed it cuts out all cards and feed them to a Machine Learning model in order to classify them, which then allows the app to find any SET's that may occur in the image.",
     "icons": ["tensorflow", "java", "python"],
-    "link": "https://github.com/Jogfre/SET-Solver"
+    "link": "https://github.com/Jogfre/SET-Solver",
+    "button": "View on Github"
 }
