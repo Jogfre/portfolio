@@ -5,6 +5,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import Image from "next/image"
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
+import ScrollToDiscover from './ScrollToDiscover';
 
 
 const floatingNavBarAnimations = {
@@ -111,6 +112,7 @@ const NavBar = ({progressValue}) => {
           )}
         </AnimatePresence>
       </div>
+      <ScrollToDiscover isInView={isInView}/>
     </div>
   )
 }

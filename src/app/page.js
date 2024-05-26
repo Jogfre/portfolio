@@ -6,6 +6,7 @@ import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
 import { useEffect, useRef, useState } from "react";
+import ScrollToDiscover from "./components/ScrollToDiscover";
 
 
 
@@ -53,7 +54,7 @@ export default function Home() {
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
       <NavBar progressValue={totalScale}/>
-        <div className="container mx-auto  mt-2 lg:mt-24 pt-12 px-3 md:px-10">
+        <div className="container mx-auto  mt-2 lg:mt-24 lg:pt-12 pt-2 px-3 md:px-10">
           <HeroSection scaleHook={setHeroScale}/>
           <AboutSection scaleHook={setAboutScale}/>
           <ProjectSection scaleHook={setProjectScale}/>

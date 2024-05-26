@@ -72,7 +72,7 @@ const Project = ({ projectName, index }) => {
         style={ {opacity: opacity, translateX: transform}}
         className={containerFormat}
         onClick={() => {scroller.scrollTo(`project_${index}`, {duration: 500, smooth: true, offset: -140})}}>
-          <div className='mx-5 flex-col md:pb-8 pb-12 mb-8 2xl:mb-0 items-center align-middle text-center justify-center'>
+          <div className='mx-5 flex-col pb-8 mb-4 2xl:mb-0 items-center align-middle text-center justify-center'>
             <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
             <p className='mt-4 2xl:max-w-2xl max-w-xl m-auto 2xl:text-lg text-sm'>{data.description}</p>
 
