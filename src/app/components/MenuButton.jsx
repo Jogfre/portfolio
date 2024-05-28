@@ -56,7 +56,7 @@ const MenuButton = ( {links, activeTitle} ) => {
             onClick={() => setIsOpen(false)}
         >
             <div className='fixed top-0 left-0 w-full h-full bg-black transition-opacity duration-300' style={{opacity: isOpen ? 0.5 : 0}}/>
-            <motion.div className='md:hidden h-fit w-[100px] fixed flex flex-col items-center right-0 z-50'
+            <motion.div className='sm:hidden h-fit w-[100px] fixed flex flex-col items-center right-0 z-50'
                 initial={{
                     opacity: 0,
                     y: "-20%",

@@ -49,7 +49,7 @@ const ProjectPage = ({scaleHook}) => {
   })
 
   return (
-    <section name="projects" className='text-white min-h-screen justify-center mt-10 mb-40' ref={targetRef}>
+    <section name="projects" className='text-white min-h-screen justify-center lg:mt-10 mt-0 mb-40' ref={targetRef}>
       
       <motion.h1 
         variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{ once: "runOnce", amount: 0.5 }} 

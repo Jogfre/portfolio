@@ -63,7 +63,7 @@ const NavBar = ({progressValue}) => {
       
       <MenuButton links={navLinks} activeTitle={activeTitle}/>
       <motion.div 
-        className='h-16 justify-between items-center hidden md:flex lg:px-16 px-8 bg-[#202020]'
+        className='h-16 justify-between items-center hidden sm:flex lg:px-16 px-8 bg-[#202020]'
         initial={{
           opacity: 0,
           y: "-50%",
@@ -84,7 +84,7 @@ const NavBar = ({progressValue}) => {
           width={45}
           height={45}
         />
-        <ul className='flex p-0 flex-row lg:space-x-12 space-x-8 lg:text-xl text-lg'>
+        <ul className='flex p-0 flex-row space-x-8 text-lg'>
           {
             navLinks.map((link, index) => (
               <li key={index}>
@@ -105,7 +105,7 @@ const NavBar = ({progressValue}) => {
                 animate={!isInView ? "visible" : "hidden"}
                 exit="hidden"
                 variants={floatingNavBarAnimations}
-                className='w-screen h-16 mx-auto hidden md:flex'
+                className='w-screen h-16 mx-auto hidden sm:flex'
               >
                 <FloatingNavBar navLinks={navLinks} progressValue={progressValue} isInView={isInView} activeTitle={activeTitle}/>
               </motion.div>
