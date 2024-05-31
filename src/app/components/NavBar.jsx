@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState, useMemo } from 'react'
 import NavLink from './NavLink'
-import { motion, useInView, AnimatePresence, useScroll, useMotionValueEvent, useTransform } from 'framer-motion'
+import { motion, useInView, AnimatePresence, useScroll, useMotionValueEvent, useTransform, useSpring } from 'framer-motion'
 import Image from "next/image"
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
@@ -51,7 +51,15 @@ const NavBar = ({}) => {
     [0, 0.12, 0.4, 0.92, 0.99],
     [0.05, 0.25, 0.50, 0.75, 1],
   )
-  const scrollProgress = useMotionValueEvent(scaledProgress, "change",(latest) => {
+
+  const smoothProgress = useSpring(scaledProgress, {
+    mass: 0.1,
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const scrollProgress = useMotionValueEvent(smoothProgress, "change",(latest) => {
     setProgressValue(latest)
   })
 
