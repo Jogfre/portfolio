@@ -1,5 +1,4 @@
-"use client";
-import { React, useState, useTransition } from 'react'
+import { React } from 'react'
 import { motion } from 'framer-motion'
 import FancyMenu from '../components/FancyMenu/FancyMenu';
 
@@ -32,15 +31,6 @@ const fadeAnimationVariants = {
   
 
 const AboutSection = () => {
-
-  const[tab, setTab] = useState("skills");
-  const [isPending, startTransition] = useTransition();
-
-  const handleTabChange = (id) => {
-    startTransition(() => {
-      setTab(id)
-    })
-  }
 
   return (
     <section className='text-white min-h-screen ba' name="about">

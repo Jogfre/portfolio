@@ -48,8 +48,8 @@ const NavBar = ({}) => {
   
   const scaledProgress = useTransform(
     scrollYProgress,
-    [0, 0.2, 0.4, 0.92, 0.99],
-    [0, 0.25, 0.50, 0.75, 1],
+    [0, 0.12, 0.4, 0.92, 0.99],
+    [0.05, 0.25, 0.50, 0.75, 1],
   )
   const scrollProgress = useMotionValueEvent(scaledProgress, "change",(latest) => {
     setProgressValue(latest)
