@@ -10,12 +10,12 @@ import EmailCard from '../components/EmailCard';
 
 
 
-const ContactSection = ({scaleHook}) => {
+const ContactSection = () => {
 
   const targetRef = useRef(null)
   const { scrollYProgress } = useScroll({
       target: targetRef,
-      offset: ["start end", "end start"],
+      offset: ["start end", "end end"],
   })
   const smoothY = useSpring(scrollYProgress, {
     stiffness: 50,
@@ -24,45 +24,27 @@ const ContactSection = ({scaleHook}) => {
 
   const opacity = useTransform(
     smoothY,
-    [0.1, 0.2],
+    [0, 0.9],
     [0, 1],
   )
   const scale = useTransform(
     smoothY,
-    [0.1, 0.4],
+    [0, 0.9],
     [0.6, 1],
   )
 
   const yPos = useTransform(
     smoothY,
-    [0, 0.4],
+    [0, 0.5],
     ["60%", "0%"],
-  )
-
-
-  const scalerX = useTransform(
-    scrollYProgress,
-    [0.2, 0.4],
-    [0, 0.35],
-  )
-
-  const smoothScalerX = useSpring(scalerX, {
-    stiffness: 100,
-    damping: 20,
-  })
-  
-  useMotionValueEvent(smoothScalerX, "change", (latest) => {
-      scaleHook(latest)
-  })
-  
+  )  
 
 
 
   return (
-    <div className='mt-12 py-24 min-h-[80svh]'>
+    <div className='py-12 min-h-[80svh]' ref={targetRef}>
       <motion.section 
         name='contact'
-        ref = {targetRef}
         style={ {opacity: opacity, scale: scale, translateY: yPos}}
         className='grid md:grid-cols-2  gap-4'
       >

@@ -26,7 +26,7 @@ const projects = [
   "Photoshop",
 ]
 
-const ProjectPage = ({scaleHook}) => {
+const ProjectPage = () => {
 
   const targetRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -38,15 +38,6 @@ const ProjectPage = ({scaleHook}) => {
       [0, 1],
       [0, 0.20],
   )
-
-  const smoothScale = useSpring(scale, {
-    stiffness: 70,
-    damping: 15,
-  })
-
-  useMotionValueEvent(smoothScale, "change", (latest) => {
-      scaleHook(latest)
-  })
 
   return (
     <section name="projects" className='text-white min-h-screen justify-center lg:mt-10 mt-0 mb-40' ref={targetRef}>

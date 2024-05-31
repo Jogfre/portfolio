@@ -31,7 +31,8 @@ const floatingNavBarAnimations = {
 
 
 
-const NavBar = ({progressValue}) => {
+const NavBar = () => {
+  const progressValue = 0;
   const targetRef = useRef(null)
   const isInView = useInView(targetRef) 
   const [activeTitle, setActiveTitle] = useState("Home")

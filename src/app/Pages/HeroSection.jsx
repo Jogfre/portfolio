@@ -41,34 +41,10 @@ const fadeAnimationVariants = {
     }
   }
 
-/* 
-variants={fadeAnimationVariants} initial={"initial"} animate={"animate"} viewport={{once: "runOnce"}}
-*/
-
-const HeroSection = ({scaleHook}) => {
-
-    const targetRef = useRef(null)
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-        offset: ["start end", "end start"],
-    })
-    const scale = useTransform(
-        scrollYProgress,
-        [0, 1],
-        [0, 0.25],
-    )
-
-    const smoothScale = useSpring(scale, {
-        stiffness: 70,
-        damping: 15,
-      })
-    
-      useMotionValueEvent(smoothScale, "change", (latest) => {
-          scaleHook(latest)
-      })
+const HeroSection = () => {
     
     return (
-        <section className='min-h-screen' ref={targetRef}>
+        <section className='min-h-screen' >
             <div  className='grid grid-cols-1 lg:grid-cols-12'>
                 <div className='col-span-7 place-self-center text-center lg:text-left'>
                     <motion.div 
