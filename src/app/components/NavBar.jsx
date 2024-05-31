@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState, useMemo } from 'react'
 import NavLink from './NavLink'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { motion, useInView, AnimatePresence, useScroll, useMotionValueEvent, useTransform } from 'framer-motion'
 import Image from "next/image"
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
@@ -31,12 +31,11 @@ const floatingNavBarAnimations = {
 
 
 
-const NavBar = () => {
-  const progressValue = 0;
+const NavBar = ({}) => {
   const targetRef = useRef(null)
   const isInView = useInView(targetRef) 
   const [activeTitle, setActiveTitle] = useState("Home")
-
+  const [progressValue, setProgressValue] = useState(0)
 
   const navLinks = useMemo(() => [
     {title: "Home", path: "home", offset: 0},
@@ -45,17 +44,33 @@ const NavBar = () => {
     {title: "Contact", path: "contact", offset: 0},
   ], []);
 
+  const { scrollYProgress } = useScroll()
+  
+  const scaledProgress = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.4, 0.92, 0.99],
+    [0, 0.25, 0.50, 0.75, 1],
+  )
+  const scrollProgress = useMotionValueEvent(scaledProgress, "change",(latest) => {
+    setProgressValue(latest)
+  })
+
+
+
+
+
   useEffect(() => {
     const titles = navLinks.map((navLink) => navLink.title) // Get the titles and where the dividers for the sections on the navbar should be
-    const dividers = 100 / (navLinks.length + 1)
+    const dividers = 100 / (navLinks.length)
 
-    var titleIndex = Math.round((progressValue * 100)/ dividers) - 1 // compute the new activeTitle
+    var titleIndex = Math.floor((progressValue * 100)/ dividers) // compute the new activeTitle
     if (titleIndex < 0) {titleIndex = 0}
-    if (titleIndex > navLinks.length - 1) {titleIndex = navLinks.length -1}
-
-    setActiveTitle(titles[titleIndex]) // set the new activeTitle for the navbar highlight
-
-  }, [progressValue, navLinks])
+    if (titleIndex >= navLinks.length ) {titleIndex = navLinks.length - 1}
+    if (titles[titleIndex] != activeTitle) {
+      setActiveTitle(titles[titleIndex]) // set the new activeTitle for the navbar highlight
+    }
+    
+  }, [progressValue, navLinks, activeTitle])
 
   return (
     <div 

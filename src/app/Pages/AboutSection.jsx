@@ -1,49 +1,8 @@
 "use client";
-import { React, useState, useRef, useTransition } from 'react'
-import TabButton from '../components/TabButton';
-import { motion, useScroll, useMotionValueEvent, useTransform, useSpring } from 'framer-motion'
+import { React, useState, useTransition } from 'react'
+import { motion } from 'framer-motion'
 import FancyMenu from '../components/FancyMenu/FancyMenu';
 
-const TAB_DATA = [
-  {
-    title: "Skills",
-    id: "skills",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Node.js</li>
-        <li>Next.js</li>
-        <li>React</li>
-        <li>Java</li>
-        <li>Git</li>
-        <li>Python</li>
-        <li>Photoshop</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Experience",
-    id: "experience",
-    content: (
-      <ul className='list-disc pl-2'>
-        <li>4 Years Employed IT Technician at <a href='https://www.advania.se/' className='text-blue-200'>Advania</a></li>
-        <li>3 Years at Kungliga Tekniska Högskolan</li>
-      </ul>
-    )
-  },
-  {
-    title: "hobbies",
-    id: "hobbies",
-    content: (
-      <ul className='list-disc pl-2'>
-        <li>Board Games</li>
-        <li>Playing Piano</li>
-        <li>Building Lego</li>
-        <li>Cyber Security / Hacking</li>
-        <li>Computer Vision</li>
-      </ul>
-    )
-  },
-];
 
 const fadeAnimationVariants = {
   initial: {
@@ -136,31 +95,6 @@ const AboutSection = () => {
           {
           // Table Menu
           }
-          <motion.div variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce", amount: 0.5}} className="flex flex-row justify-start mt-8">
-            <TabButton
-            selectTab={() => handleTabChange("skills")}
-            active={tab === "skills"}
-            >
-            Skills
-            </TabButton>
-            <TabButton
-            selectTab={() => handleTabChange("experience")}
-            active={tab === "experience"}
-            >
-            Experience
-            </TabButton>
-            <TabButton
-            selectTab={() => handleTabChange("hobbies")}
-            active={tab === "hobbies"}
-            >
-            Hobbies
-            </TabButton>
-          </motion.div>
-          <motion.div variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce"}} className="mt-4 min-h-44">
-            {TAB_DATA.find((t) => t.id === tab).content}
-          </motion.div>
-          {/*
-          */}
           <motion.div variants={fadeAnimationVariants} initial={"initial"} whileInView={"animate"} viewport={{once: "runOnce", amount: 0.5}}>
             <FancyMenu />
           </motion.div>

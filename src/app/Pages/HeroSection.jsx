@@ -1,8 +1,7 @@
-"use client";
-import React, { useRef }from 'react'
+import React from 'react'
 import Image from "next/image"
 import { TypeAnimation } from 'react-type-animation'
-import { motion, useScroll, useMotionValueEvent, useTransform, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Link } from 'react-scroll';
 
 
@@ -42,7 +41,7 @@ const fadeAnimationVariants = {
   }
 
 const HeroSection = () => {
-    
+
     return (
         <section className='min-h-screen' >
             <div  className='grid grid-cols-1 lg:grid-cols-12'>

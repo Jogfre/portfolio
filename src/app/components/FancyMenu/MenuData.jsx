@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 const MenuData = memo(({data, selectedTab}) => {
   return (
     <motion.ul
+      className='list-disc pl-4'
       key={selectedTab ? selectedTab : "empty"}
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}

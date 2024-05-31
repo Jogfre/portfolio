@@ -5,6 +5,7 @@ import { Element, scroller } from 'react-scroll';
 
 const Project = ({ projectName, index }) => {
 
+
   const data = require(`../../../../public/projects/${projectName}/data.json`)
   const enterFromRight = index % 2 != 0
 

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useTransition } from 'react'
+import React, { useState, useTransition, useMemo } from 'react'
 import MenuData from './MenuData';
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -77,9 +77,9 @@ const FancyMenu = () => {
   
     return (
         <div 
-          className="w-fit h-fit mt-4 min-h-64 flex rounded-lg"
+          className="w-fit h-fit mt-4 min-h-64 flex"
           >
-            <div className="w-full h-full flex flex-col rounded-lg">
+            <div className="w-full h-full flex flex-col">
               <nav>
                 <ul className="w-full flex-row flex">
                     {
@@ -87,14 +87,14 @@ const FancyMenu = () => {
                           return (
                               <motion.li 
                                   key={i} 
-                                  className="justify-center items-center h-max px-4 pt-2 cursor-pointer text-slate-500 transition-colors duration-200 relative"
+                                  className="justify-center items-center h-max px-2 pt-2 cursor-pointer relative select-none"
                                   onClick={() => handleTabChange(data.id)}
                                   whileHover={{
                                     textShadow: "0px 0px 2px rgb(255, 255, 255)",
                                     color: "#fff",
-                                    transition: {duration: 0.2},
+                                    transition: { ease: "easeOut", duration: 0.2 },
                                   }}
-                                  style={{color: data.id == selectedTab ? "#fff" : ""}}
+                                  style={{color: data.id == selectedTab ? "#fc9f32" : "#a2a2a2"}}
                                   >
                                     {data.title}
                                     {data.id == selectedTab ? (
@@ -113,7 +113,7 @@ const FancyMenu = () => {
                 </ul>
               </nav> 
 
-              <div className="w-full h-max px-5 pt-2">
+              <div className="w-full h-max pt-3">
                 {/* 
                 */}
                 <MenuData data={TAB_DATA.find((t) => t.id === selectedTab).data} selectedTab={selectedTab}/>

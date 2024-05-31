@@ -1,6 +1,5 @@
-"use client";
-import React, { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform, useMotionValueEvent, useSpring } from "framer-motion";
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform } from "framer-motion";
 import Project from '../components/ProjectCards/Project.jsx';
 
 const fadeAnimationVariants = {

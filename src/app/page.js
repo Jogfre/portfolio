@@ -26,7 +26,7 @@ export default function Home() {
                 gestureOrientation: 'vertical',
                 smoothWheel: true,
                 smoothTouch: false,
-                wheelMultiplier: 0.9,
+                wheelMultiplier: 0.8,
                 touchMultiplier: 2,
                 normalizeWheel: true,
                 easing: (t) => bezier(.59,.15,.35,.77), // https://www.desmos.com/calculator/brs54l4xou
@@ -36,10 +36,9 @@ export default function Home() {
     )()
   }, [])
 
-
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
-      <NavBar/>
+      <NavBar />
         <div className="container mx-auto  mt-2 lg:mt-24 lg:pt-12 pt-2 px-3 md:px-10">
           <HeroSection />
           <AboutSection />

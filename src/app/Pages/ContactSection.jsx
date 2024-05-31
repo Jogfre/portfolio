@@ -1,6 +1,5 @@
-"use client"
 import { React, useRef } from 'react'
-import { motion, useTransform, useScroll, useSpring, useMotionValueEvent } from 'framer-motion'
+import { motion, useTransform, useScroll } from 'framer-motion'
 import Image from "next/image";
 
 import GitHubIcon from '../../../public/icons/github_icon.svg'
@@ -17,25 +16,21 @@ const ContactSection = () => {
       target: targetRef,
       offset: ["start end", "end end"],
   })
-  const smoothY = useSpring(scrollYProgress, {
-    stiffness: 50,
-    damping: 20,
-  });
 
   const opacity = useTransform(
-    smoothY,
+    scrollYProgress,
     [0, 0.9],
     [0, 1],
   )
   const scale = useTransform(
-    smoothY,
+    scrollYProgress,
     [0, 0.9],
     [0.6, 1],
   )
 
   const yPos = useTransform(
-    smoothY,
-    [0, 0.5],
+    scrollYProgress,
+    [0, 0.8],
     ["60%", "0%"],
   )  
 
