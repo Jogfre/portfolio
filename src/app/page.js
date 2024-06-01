@@ -36,16 +36,48 @@ export default function Home() {
     )()
   }, [])
 
+  const wholeRef = useRef(null)
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const projectRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const [sectionRanges, setSectionRanges] = useState({});
+
+  useEffect(() => {
+    const calculatePositions = () => {
+      if (heroRef.current && aboutRef.current && projectRef.current && contactRef.current) {
+        const mainContainer = document.querySelector('main[name="home"]');
+        const mainRect = mainContainer.getBoundingClientRect();
+        const fullHeight = mainContainer.scrollHeight;
+
+        setSectionRanges({
+          hero: (heroRef.current.getBoundingClientRect().top) / fullHeight,
+          about: (aboutRef.current.getBoundingClientRect().top) / fullHeight,
+          project: (projectRef.current.getBoundingClientRect().top) / fullHeight,
+          contact: (contactRef.current.getBoundingClientRect().top) / fullHeight,
+        });
+      }
+    };
+
+    calculatePositions();
+    window.addEventListener('resize', calculatePositions());
+
+    return () => {
+      window.removeEventListener('resize', calculatePositions());
+    };
+  }, []);
+
   return (
-    <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
-      <NavBar />
+    <main ref={wholeRef} name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
+      <NavBar ranges={sectionRanges} />
         <div className="container mx-auto  mt-2 lg:mt-24 lg:pt-12 pt-2 px-3 md:px-10">
-          <HeroSection />
-          <AboutSection />
-          <ProjectSection />
-          <ContactSection />
+          <div ref={heroRef}><HeroSection /></div>
+          <div ref={aboutRef}><AboutSection /></div>
+          <div ref={projectRef}><ProjectSection /></div>
+          <div ref={contactRef}><ContactSection /></div>
         </div>
     </main>
   );
-  
+
 }

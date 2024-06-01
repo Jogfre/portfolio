@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState, useMemo } from 'react'
 import NavLink from './NavLink'
-import { motion, useInView, AnimatePresence, useScroll, useMotionValueEvent, useTransform, useSpring } from 'framer-motion'
+import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion'
 import Image from "next/image"
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
@@ -31,11 +31,15 @@ const floatingNavBarAnimations = {
 
 
 
-const NavBar = ({}) => {
+const NavBar = ({ranges}) => {
+
+
   const targetRef = useRef(null)
   const isInView = useInView(targetRef) 
+
+
   const [activeTitle, setActiveTitle] = useState("Home")
-  const [progressValue, setProgressValue] = useState(0)
+  
 
   const navLinks = useMemo(() => [
     {title: "Home", path: "home", offset: 0},
@@ -45,40 +49,34 @@ const NavBar = ({}) => {
   ], []);
 
   const { scrollYProgress } = useScroll()
-  
+
   const scaledProgress = useTransform(
     scrollYProgress,
-    [0, 0.12, 0.4, 0.92, 0.99],
+    [0, ranges.about, ranges.project, ranges.contact, 0.99],
     [0.05, 0.25, 0.50, 0.75, 1],
   )
 
   const smoothProgress = useSpring(scaledProgress, {
-    mass: 0.1,
     stiffness: 100,
-    damping: 30,
+    damping: 25,
     restDelta: 0.001
   });
 
-  const scrollProgress = useMotionValueEvent(smoothProgress, "change",(latest) => {
-    setProgressValue(latest)
-  })
 
 
 
 
-
-  useEffect(() => {
+  useMotionValueEvent(scaledProgress, "change", (latest) => {
     const titles = navLinks.map((navLink) => navLink.title) // Get the titles and where the dividers for the sections on the navbar should be
     const dividers = 100 / (navLinks.length)
-
-    var titleIndex = Math.floor((progressValue * 100)/ dividers) // compute the new activeTitle
+    var titleIndex = Math.floor((latest * 100)/ dividers) // compute the new activeTitle
     if (titleIndex < 0) {titleIndex = 0}
     if (titleIndex >= navLinks.length ) {titleIndex = navLinks.length - 1}
     if (titles[titleIndex] != activeTitle) {
       setActiveTitle(titles[titleIndex]) // set the new activeTitle for the navbar highlight
     }
-    
-  }, [progressValue, navLinks, activeTitle])
+  })
+
 
   return (
     <div 
@@ -131,7 +129,7 @@ const NavBar = ({}) => {
                 variants={floatingNavBarAnimations}
                 className='w-screen h-16 mx-auto hidden sm:flex'
               >
-                <FloatingNavBar navLinks={navLinks} progressValue={progressValue} isInView={isInView} activeTitle={activeTitle}/>
+                <FloatingNavBar navLinks={navLinks} isInView={isInView} activeTitle={activeTitle} progressValue={scaledProgress}/>
               </motion.div>
           )}
         </AnimatePresence>

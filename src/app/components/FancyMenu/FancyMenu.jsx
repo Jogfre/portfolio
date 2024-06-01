@@ -87,11 +87,10 @@ const FancyMenu = () => {
                           return (
                               <motion.li 
                                   key={i} 
-                                  className="justify-center items-center h-max px-2 pt-2 cursor-pointer relative select-none"
+                                  className="justify-center items-center h-max px-2 pt-2 cursor-pointer select-none relative"
                                   onClick={() => handleTabChange(data.id)}
                                   whileHover={{
-                                    textShadow: "0px 0px 2px rgb(255, 255, 255)",
-                                    color: "#fff",
+                                    color: data.id != selectedTab ? "#fff" : "#fc9f32",
                                     transition: { ease: "easeOut", duration: 0.2 },
                                   }}
                                   style={{color: data.id == selectedTab ? "#fc9f32" : "#a2a2a2"}}

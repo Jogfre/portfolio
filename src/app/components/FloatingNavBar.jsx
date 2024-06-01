@@ -1,11 +1,25 @@
-"use"
+'use client'
+import React, { useState } from 'react'
 import NavLink from './NavLink'
 import PropTypes from "prop-types";
-import { motion } from 'framer-motion'
+import { motion, useMotionValueEvent, useSpring } from 'framer-motion'
 
 
 
 const FloatingNavBar = ( {navLinks, progressValue, isInView, activeTitle} ) => {
+  
+  const  [scaleValue, setScaleValue] = useState(0)
+
+
+  const smoothProgress = useSpring(progressValue, {
+    stiffness: 100,
+    damping: 25,
+    restDelta: 0.001
+  });
+
+  useMotionValueEvent(smoothProgress, "change", (latest) => {
+    setScaleValue(latest)
+  })
   
   return (
     <div className='z-50 flex justify-around relative items-center px-1 w-fit h-12 rounded-full mx-auto opacity-90 hover:opacity-100 transition-opacity duration-300 pointer-events-auto bg-[#1f1f1f] overflow-hidden'>
@@ -27,15 +41,15 @@ const FloatingNavBar = ( {navLinks, progressValue, isInView, activeTitle} ) => {
           active: {
             opacity: 1,
             x: "0%",
-            transition: {duration: 0.6}
+            transition: {ease: "easeOut", duration: 0.6}
           },
           inActive: {
             opacity: 0.,
             x: "-30%",
-            transition: {duration: 0.6}
+            transition: {ease: "easeOut", duration: 0.6}
           },
       }}
-        style={{ scaleX: progressValue * 100 +"%", transformOrigin: '0%' }} 
+        style={{ scaleX: scaleValue * 100 +"%", transformOrigin: '0%' }} 
         />
     </div>
   );
