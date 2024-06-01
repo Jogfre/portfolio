@@ -36,7 +36,7 @@ const Project = ({ projectName, index }) => {
     [enterFrom, "0%", "0%", exitTo],
   )
 
-  const isInView = useInView(targetRef, {amount: "all", margin: "10% 10% 10% 10%"}) 
+  const isInView = useInView(targetRef, {amount: "all", margin: "0% 10% 10% 10%"}) 
   
 
   /* ---> useEffect to track the change and update the current index. Whenever isInView changes, the hook function will be updated.
@@ -59,7 +59,7 @@ const Project = ({ projectName, index }) => {
 
 
   const handeButtonClick = (link, e) => {
-    if(e && e.stopPropagation) e.stopPropagation(); // Prevent button from triggering the  parrent scrollTo event.
+    if(e && e.stopPropagation) e.stopPropagation(); // Prevent button from triggering potential parrent events.
 
     if (link != "/") {
       open(data.link, "_blank")
@@ -67,38 +67,36 @@ const Project = ({ projectName, index }) => {
   }
   
   return (
-    <Element name = {`project_${index}`}>
-      <motion.div
-        ref = {targetRef}
-        style={ {opacity: opacity, translateX: transform}}
-        className={containerFormat}
-        onClick={() => {scroller.scrollTo(`project_${index}`, {duration: 500, smooth: true, offset: -140})}}>
-          <div className='mx-5 flex-col pb-8 mb-4 2xl:mb-0 items-center align-middle text-center justify-center'>
-            <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
-            <p className='mt-4 2xl:max-w-2xl max-w-xl m-auto 2xl:text-lg text-sm'>{data.description}</p>
+    <motion.div
+      ref = {targetRef}
+      style={ {opacity: opacity, translateX: transform}}
+      className={containerFormat}
+      >
+        <div className='mx-5 flex-col pb-8 mb-4 2xl:mb-0 items-center align-middle text-center justify-center'>
+          <h1 className='text-3xl mb:text-4xl'>{data.title}</h1>
+          <p className='mt-4 2xl:max-w-2xl max-w-xl m-auto 2xl:text-lg text-sm'>{data.description}</p>
 
-            <div className='button_container flex justify-center 2xl:mt-12 mt-6 select-none align-middle items-center' >
-                <motion.div
-                  whileHover={{ 
-                    scale: 1.1,
-                    boxShadow: `0px 0px 8px ${colorHex}`,
-                    transition: {duration: 0.2},
-                  }}
-                  whileTap={{
-                    scale: 0.95
-                  }}
-                  transition={{ duration: 0.2 }}
-                  className={`group rounded-full p-1 2xl:border-2 border border-white hover:border-${highlightColor} transition-colors duration-200`}
-                >
-                  <a className={bracketIconFormat} onClick={(e) => {handeButtonClick(data.link, e)}}>{data.button}</a>
-                </motion.div>
-            </div>
+          <div className='button_container flex justify-center 2xl:mt-12 mt-6 select-none align-middle items-center' >
+              <motion.div
+                whileHover={{ 
+                  scale: 1.1,
+                  boxShadow: `0px 0px 8px ${colorHex}`,
+                  transition: {duration: 0.2},
+                }}
+                whileTap={{
+                  scale: 0.95
+                }}
+                transition={{ duration: 0.2 }}
+                className={`group rounded-full p-1 2xl:border-2 border border-white hover:border-${highlightColor} transition-colors duration-200`}
+              >
+                <a className={bracketIconFormat} onClick={(e) => {handeButtonClick(data.link, e)}}>{data.button}</a>
+              </motion.div>
           </div>
-          <div className= 'flex justify-center'>
-            <ProjectCards projectName={projectName} iconData={data.icons} isOpen={isInView}/>
-          </div>
-      </motion.div>
-    </Element>
+        </div>
+        <div className= 'flex justify-center'>
+          <ProjectCards projectName={projectName} iconData={data.icons} isOpen={isInView}/>
+        </div>
+    </motion.div>
   )
 }
 

@@ -43,8 +43,8 @@ const NavBar = ({ranges}) => {
 
   const navLinks = useMemo(() => [
     {title: "Home", path: "home", offset: 0},
-    {title: "About", path: "about", offset: -40},
-    {title: "Projects", path: "projects", offset: -20},
+    {title: "About", path: "about", offset: 0},
+    {title: "Projects", path: "projects", offset: 0},
     {title: "Contact", path: "contact", offset: 0},
   ], []);
 
@@ -52,8 +52,8 @@ const NavBar = ({ranges}) => {
 
   const scaledProgress = useTransform(
     scrollYProgress,
-    [0, ranges.about, ranges.project, ranges.contact, 0.99],
-    [0.05, 0.25, 0.50, 0.75, 1],
+    [0, ranges.about, ranges.project, ranges.contact, 0.95],
+    [0.05, 0.25, 0.50, 0.70, 1],
   )
 
   const smoothProgress = useSpring(scaledProgress, {
@@ -61,10 +61,6 @@ const NavBar = ({ranges}) => {
     damping: 25,
     restDelta: 0.001
   });
-
-
-
-
 
   useMotionValueEvent(scaledProgress, "change", (latest) => {
     const titles = navLinks.map((navLink) => navLink.title) // Get the titles and where the dividers for the sections on the navbar should be
@@ -127,6 +123,7 @@ const NavBar = ({ranges}) => {
                 animate={!isInView ? "visible" : "hidden"}
                 exit="hidden"
                 variants={floatingNavBarAnimations}
+                transition={{duration: 0.4}}
                 className='w-screen h-16 mx-auto hidden sm:flex'
               >
                 <FloatingNavBar navLinks={navLinks} isInView={isInView} activeTitle={activeTitle} progressValue={scaledProgress}/>

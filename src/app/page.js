@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Home() {  
 
-  // Initialize the smooth scroll component from LocomotiveScroll. Has to be done on client render and not server render
+  // Initialize the smooth scroll component from LocomotiveScroll. Has to be done on client render and not server render, hence the useEffect
   useEffect( () => {
     (
       async () => {
@@ -29,47 +29,52 @@ export default function Home() {
                 wheelMultiplier: 0.8,
                 touchMultiplier: 2,
                 normalizeWheel: true,
-                easing: (t) => bezier(.59,.15,.35,.77), // https://www.desmos.com/calculator/brs54l4xou
+                easing: (t) => bezier(.59,.15,.35,.77),
             },
         });
       }
     )()
   }, [])
 
-  const wholeRef = useRef(null)
+  /*
+  --- > NavBar stuff to get the relative positions of the sections on the page to scale the NavBar elements. < ---
+  */
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const projectRef = useRef(null);
   const contactRef = useRef(null);
 
-  const [sectionRanges, setSectionRanges] = useState({});
+  const [sectionRanges, setSectionRanges] = useState({hero: 0, about: 25,  project: 50, contact: 75}); //Default values are here because the NavBar wouldn't re-render properly on size change without them ¯\_(ツ)_/¯
 
   useEffect(() => {
     const calculatePositions = () => {
       if (heroRef.current && aboutRef.current && projectRef.current && contactRef.current) {
         const mainContainer = document.querySelector('main[name="home"]');
-        const mainRect = mainContainer.getBoundingClientRect();
         const fullHeight = mainContainer.scrollHeight;
-
+  
         setSectionRanges({
-          hero: (heroRef.current.getBoundingClientRect().top) / fullHeight,
-          about: (aboutRef.current.getBoundingClientRect().top) / fullHeight,
-          project: (projectRef.current.getBoundingClientRect().top) / fullHeight,
-          contact: (contactRef.current.getBoundingClientRect().top) / fullHeight,
+          // Get the position of the {ref} relative to the viewport, then add the scrollY value to get position relative to the top of the document.
+          // Then divide by the full height of the document to turn the value into a percentage which will be used as a "divider" in the navbar later.
+          hero: (heroRef.current.getBoundingClientRect().top + window.scrollY) / fullHeight, 
+          about: (aboutRef.current.getBoundingClientRect().top + window.scrollY) / fullHeight,
+          project: (projectRef.current.getBoundingClientRect().top + window.scrollY) / fullHeight,
+          contact: (contactRef.current.getBoundingClientRect().top + window.scrollY) / fullHeight,
         });
       }
     };
 
     calculatePositions();
-    window.addEventListener('resize', calculatePositions());
+    window.addEventListener('resize', calculatePositions);
 
     return () => {
-      window.removeEventListener('resize', calculatePositions());
+      window.removeEventListener('resize', calculatePositions);
     };
   }, []);
 
+  // NavBar stuff ends here.
+
   return (
-    <main ref={wholeRef} name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
+    <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
       <NavBar ranges={sectionRanges} />
         <div className="container mx-auto  mt-2 lg:mt-24 lg:pt-12 pt-2 px-3 md:px-10">
           <div ref={heroRef}><HeroSection /></div>
@@ -79,5 +84,4 @@ export default function Home() {
         </div>
     </main>
   );
-
 }

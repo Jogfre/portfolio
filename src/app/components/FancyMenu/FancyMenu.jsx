@@ -1,7 +1,7 @@
 'use client'
-import React, { useState, useTransition, useMemo } from 'react'
+import React, { useState, useTransition } from 'react'
 import MenuData from './MenuData';
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 const TAB_DATA = [
   {
@@ -63,17 +63,17 @@ const TAB_DATA = [
   },    
 ];
 
-
 const FancyMenu = () => {
 
     const [selectedTab, setSelectedTab] = useState(TAB_DATA[0].id);
     const [isPending, startTransition] = useTransition();
 
-    const handleTabChange = (id) => {
+    function selectTab(nextTab) {
       startTransition(() => {
-        setSelectedTab(id)
-      })
+        setSelectedTab(nextTab);
+      });
     }
+
   
     return (
         <div 
@@ -88,7 +88,7 @@ const FancyMenu = () => {
                               <motion.li 
                                   key={i} 
                                   className="justify-center items-center h-max px-2 pt-2 cursor-pointer select-none relative"
-                                  onClick={() => handleTabChange(data.id)}
+                                  onClick={() => selectTab(data.id)}
                                   whileHover={{
                                     color: data.id != selectedTab ? "#fff" : "#fc9f32",
                                     transition: { ease: "easeOut", duration: 0.2 },
@@ -98,7 +98,7 @@ const FancyMenu = () => {
                                     {data.title}
                                     {data.id == selectedTab ? (
                                       <motion.div 
-                                        className='absolute bottom-[-1px] left-[5px] right-[5px] h-[2px] bg-gradient-to-r from-[#1a2766] via-[#ae1b1e] to-[#fc9f32]' 
+                                        className='absolute bottom-[-1px] left-[5px] right-[5px] h-[2px] bg-gradient-to-r from-[#2543da] via-[#ae1b1e] to-[#fc9f32]'
                                         layoutId="underline"
                                         transition={{ type: "spring", stiffness: 200, damping: 20, duration: 1 }}
                                       />
@@ -113,10 +113,7 @@ const FancyMenu = () => {
               </nav> 
 
               <div className="w-full h-max pt-3">
-                {/* 
-                */}
                 <MenuData data={TAB_DATA.find((t) => t.id === selectedTab).data} selectedTab={selectedTab}/>
-
               </div>
             </div>
         </div>

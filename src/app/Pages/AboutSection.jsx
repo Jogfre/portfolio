@@ -33,7 +33,7 @@ const fadeAnimationVariants = {
 const AboutSection = () => {
 
   return (
-    <section className='text-white min-h-screen ba' name="about">
+    <section className='text-white min-h-screen' name="about">
       <div className='lg:grid lg:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
         
         
@@ -41,7 +41,7 @@ const AboutSection = () => {
           // About Me Image
         }
         <motion.img 
-          className='rounded-xl w-2/3 lg:w-[500px] pointer-events-none'
+          className='rounded-xl w-3/5 lg:w-[500px] pointer-events-none'
           variants={fadeAnimationVariants}
           initial={"initial_picture"}
           whileInView={"animate_picture"}
