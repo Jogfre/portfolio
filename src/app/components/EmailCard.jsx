@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 
@@ -9,11 +10,12 @@ const EmailCard = () => {
         const data = {
           email: e.target.email.value,
           subject: e.target.subject.value,
-          message: e.target.message.value,
+          message:  e.target.message.value,
         };
+        
         const JSONdata = JSON.stringify(data);
         const endpoint = "/api/send";
-    
+
         // Form the request for sending data to the server.
         const options = {
           // The method is POST because we are sending data.
@@ -25,24 +27,32 @@ const EmailCard = () => {
           // Body of the request is the JSON data we created above.
           body: JSONdata,
         };
-    
+
+        
         const response = await fetch(endpoint, options);
-        const resData = await response.json();
-    
+
+        
         if (response.status === 200) {
-          console.log("Message sent.");
           setEmailSubmitted(true);
+        }
+        else {
+          setEmailSubmitted(true)
         }
       };
 
 
     
     return (
-    <div className=''>
+    <div className='mt-5 lg:mt-0'>
         {emailSubmitted ? (
-            <p className="text-green-500 text-sm mt-2">
-            Message sent successfully!
+          <div className="flex flex-col rounded-md border-2 border-[#33353F] bg-[#18191E] p-5 text-center" >
+            <p className="text-green-500 text-2xl">
+              Message Sent!
             </p>
+            <p className='text-green-500 text-md my-4'>
+              Thank you for reaching out! I will be contacting you soon!
+            </p>
+          </div>
         ) : (
             <form className="flex flex-col rounded-md border-2 border-[#33353F] bg-[#18191E] p-5" onSubmit={handleSubmit}>
             <div className="mb-6">
@@ -50,7 +60,7 @@ const EmailCard = () => {
                 htmlFor="email"
                 className="text-white block mb-2 text-sm font-medium"
                 >
-                Your email
+                Your Email
                 </label>
                 <input
                 name="email"
@@ -92,7 +102,7 @@ const EmailCard = () => {
                 />
             </div>
             <motion.button
-                // type="submit"
+                type="submit"
                 className="bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] text-white font-medium py-2.5 px-5 rounded-lg w-[50%] self-center"
                 whileHover={{ 
                     scale: 1.10,
@@ -100,7 +110,7 @@ const EmailCard = () => {
                   }}
                   transition={{ duration: 0.2 }}
             >
-                Send Message
+              Send Message
             </motion.button>
             </form>
         )}
