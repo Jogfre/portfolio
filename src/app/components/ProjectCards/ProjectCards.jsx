@@ -32,15 +32,15 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
     return (
         <div className={isOpen ? "open-card-container" : "card-container"}>
 
-            {iconLen >= 3 ? <div className="small-card card relative overflow-hidden">
+            {iconLen >= 2 ? <div className="small-card card relative overflow-hidden">
                 <Image 
-                        src={`/icons/${icon3}.svg`}
-                        alt={`${projectName} icon 3`}
+                        src={`/icons/${icon2}.svg`}
+                        alt={`${projectName} icon 2`}
                         className='pointer-events-none p-1'
                         fill
                         style={{objectFit: "contain"}}
                 />
-                <IconOverlay iconName={icon3}/>
+                <IconOverlay iconName={icon2}/>
             </div> : <div/>}
 
             <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img4.jpg)`, backgroundSize: "cover" }} />
@@ -72,16 +72,16 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
             <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img2.jpg)`, backgroundSize: "cover" }} />
 
             
-            {iconLen >= 2 ? 
+            {iconLen >= 3 ? 
             <div className="small-card card relative overflow-hidden">
                 <Image 
-                        src={`/icons/${icon2}.svg`}
-                        alt={`${projectName} icon 2`}
+                        src={`/icons/${icon3}.svg`}
+                        alt={`${projectName} icon 3`}
                         className='pointer-events-none p-1'
                         fill
                         style={{objectFit: "contain"}}
                 />
-                <IconOverlay iconName={icon2}/> 
+                <IconOverlay iconName={icon3}/> 
             </div> : <div/>}
 
             <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img1.jpg)`, backgroundSize: "cover" }} />
