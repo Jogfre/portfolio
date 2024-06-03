@@ -2,7 +2,6 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react'
 import NavLink from './NavLink'
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion'
-import Image from "next/image"
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
 import ScrollToDiscover from './ScrollToDiscover';
@@ -95,9 +94,9 @@ const NavBar = ({ranges}) => {
         }}
         viewport={{once: "runOnce"}}
       >
-        <Image
+        <img
           className='pointer-events-none'
-          src="/images/Icon.png"
+          src={"/images/Icon.png"}
           alt="Logo image"
           width={45}
           height={45}

@@ -3,7 +3,9 @@
     width: 30vmin;
     max-width: 250px;
     aspect-ratio: 5 / 7;
-    transition: transform 500ms ease-in-out;
+    transition: transform;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
     position: relative;
 }
 
@@ -13,7 +15,9 @@
     width: 30vmin;
     max-width: 250px;
     aspect-ratio: 5 / 7;
-    transition: transform 500ms ease-in-out;
+    transition: transform;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
     position: relative;
 }
 
@@ -39,7 +43,6 @@
     width: 12vmin;
     max-width: 100px;
     border-radius: 2vmin;
-    pointer-events: none;
     background-color: white;
     border-width: 1px;
     transform: translate(75%, 75%);

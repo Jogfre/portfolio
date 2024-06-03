@@ -1,5 +1,5 @@
 import { React, useRef } from 'react'
-import { motion, useTransform, useScroll } from 'framer-motion'
+import { motion, useTransform, useScroll, spring } from 'framer-motion'
 import Image from "next/image";
 
 import GitHubIcon from '../../../public/icons/github_icon.svg'
@@ -41,11 +41,11 @@ const ContactSection = () => {
       <motion.section 
         name='contact'
         style={ {opacity: opacity, scale: scale, translateY: yPos}}
-        className='grid md:grid-cols-2  gap-4'
+        className='grid lg:grid-cols-2 gap-4'
       >
         <div className='px-5'>
             <h5 className='text-xl font-bold text-white my-2'>Let&apos;s Connect!</h5>
-            <p className='text-[#ADB7BE] mb-4 max-w-md'>I am currently looking for new opportunities. Wether you have a question or just want to reach out, I will try my best to get back to you!</p>
+            <p className='text-[#ADB7BE] mb-4 max-w-md'>I am currently looking for new opportunities. Wether you have a question or just want to reach out, I will get back to you as soon as possible!</p>
             
             
             <div className='socials flex flex-row gap-2'>
@@ -92,7 +92,21 @@ const ContactSection = () => {
               
             </div>
         </div>
-        <EmailCard />
+
+        <motion.div 
+          className='relative mt-4 lg:mt-0'
+          whileHover={{
+            filter: "grayscale(100%)"
+          }}
+        >
+          <EmailCard />
+          <div className='absolute flex flex-wrap top-0 left-0 w-full h-full opacity-0 hover:opacity-100 rounded-md transition-opacity duration-200 justify-center items-center text-center text-lg select-none'>
+              <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'/>
+              <p className='z-10'>This function is still being developed.<br/>Try some of the other options in the meantime!</p>
+          </div>
+        </motion.div>
+        
+        
 
       </motion.section>
     </div>
