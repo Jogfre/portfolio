@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from "next/image"
 import { TypeAnimation } from 'react-type-animation'
 import { motion } from 'framer-motion'
 import { Link } from 'react-scroll';
@@ -101,6 +100,7 @@ const HeroSection = () => {
                                 Get in contact
                             </motion.button>
                         </Link>
+                        {/* 
                         <motion.button variants={fadeAnimationVariants} 
                             initial={"initial_button"} animate={"animate_button"} viewport={{once: "runOnce"}}
                             whileHover={{
@@ -115,16 +115,17 @@ const HeroSection = () => {
                             className='px-1 py-1 w-full lg:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] text-white mt-4'>
                             <span className='block bg-[#121212] rounded-full px-5 py-2'>Download CV</span>
                         </motion.button>
+                        */}
                     </div>
                 </div>
                 <motion.div variants={fadeAnimationVariants} initial={"initial_avatar"} animate={"animate_entry"} viewport={{once: "runOnce"}} className='lg:order-last lg:mb-0 mb-4 order-first col-span-5 place-self-center pt-4'>
                     <div className='rounded-full shadow-lg shadow-[#1a2766] bg-gradient-to-b from-[#1F1F1F] to-[#080808] xl:w-[400px] xl:h-[400px] sm:w-[300px] sm:h-[300px] w-[240px] h-[240px] border-4 border-[#1f1f1f] relative overflow-hidden'>
-                        <Image 
-                            src="/images/ProfilePhoto_Transparent.png"
+                        <img 
+                            src={"/images/ProfilePhoto_Transparent.png"}
                             alt="hero image"
-                            className='absolute transform select-none pointer-events-none mt-5'
+                            className='absolute select-none pointer-events-none mt-5 scale-[95%]'
                             fill
-                            style={{objectFit: "contain"}}
+                            style={{objectFit: "cover"}}
                         />
                     </div>
                 </motion.div>
