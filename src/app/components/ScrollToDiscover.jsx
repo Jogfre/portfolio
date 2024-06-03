@@ -40,12 +40,8 @@ const ScrollToDiscover = ( {children, isInView} ) => {
                 <AnimatedText inputText={"Scroll to see more"} duration={1.5} delay={3} setIsHovered={setIsHovered}/>
                 <motion.div 
                     className="absolute bottom-[-2px] left-[5%] right-[5%] h-[1px] bg-[#ADB7BE]"
-                    animate={{
-                        scaleX: isHovered ? "100%" : "0%"
-                    }}
-                    initial={{
-                        scaleX: "0%"
-                    }}
+                    animate={{scaleX: isHovered ? "100%" : "0%"}}
+                    initial={{scaleX: "0%"}}
                     transition={{
                         duration: 0.4,
                         ease: "easeInOut",
@@ -85,7 +81,7 @@ const AnimatedText = ( {inputText, duration, delay, setIsHovered} ) => {
             {
                 characters.map( (word, i) => {
                     const stagger = (amount * i)
-                    return <Character key={i} duration={duration} delay={delay} stagger={stagger + delay}>{word}</Character>
+                    return <Character key={i} duration={duration} delay={delay} stagger={stagger}>{word}</Character>
                 })
             }
         </motion.div>
