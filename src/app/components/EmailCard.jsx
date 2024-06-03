@@ -27,8 +27,10 @@ const EmailCard = () => {
           // Body of the request is the JSON data we created above.
           body: JSONdata,
         };
-
         
+        setEmailSubmitted(true)
+        
+        /* 
         const response = await fetch(endpoint, options);
 
         
@@ -38,6 +40,7 @@ const EmailCard = () => {
         else {
           setEmailSubmitted(true)
         }
+        */
       };
 
 
@@ -46,11 +49,11 @@ const EmailCard = () => {
     <div className='mt-5 lg:mt-0'>
         {emailSubmitted ? (
           <div className="flex flex-col rounded-md border-2 border-[#33353F] bg-[#18191E] p-5 text-center" >
-            <p className="text-green-500 text-2xl">
-              Message Sent!
+            <p className="text-red-500 text-2xl">
+              This function is still being developed.
             </p>
-            <p className='text-green-500 text-md my-4'>
-              Thank you for reaching out! I will be contacting you soon!
+            <p className='text-red-500 text-md my-4'>
+              I appreciate the enthusiasm though!
             </p>
           </div>
         ) : (

@@ -1,5 +1,5 @@
 import { React, useRef } from 'react'
-import { motion, useTransform, useScroll } from 'framer-motion'
+import { motion, useTransform, useScroll, spring } from 'framer-motion'
 import Image from "next/image";
 
 import GitHubIcon from '../../../public/icons/github_icon.svg'
@@ -92,7 +92,20 @@ const ContactSection = () => {
               
             </div>
         </div>
-        <EmailCard />
+
+        <motion.div 
+          className='relative mt-4 lg:mt-0'
+          whileHover={{
+            filter: "grayscale(100%)"
+          }}
+        >
+          <EmailCard />
+          <div className='absolute flex flex-wrap top-0 left-0 w-full h-full opacity-0 hover:opacity-100 rounded-md transition-opacity duration-200 justify-center items-center text-center text-lg select-none'>
+              <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'/>
+              <p className='z-10'>This function is still being developed.<br/>Try some of the other options in the meantime!</p>
+          </div>
+        </motion.div>
+        
         
 
       </motion.section>
