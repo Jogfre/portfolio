@@ -1,15 +1,16 @@
-import React from 'react'
-import { motion } from "framer-motion"
+'use client'
+import React, { useState } from 'react'
+import { AnimatePresence, motion } from "framer-motion"
 import { ArrowDownIcon } from "@heroicons/react/16/solid"
 import { scroller } from 'react-scroll'
 
 
-
-const ScrollToDiscover = ( {isInView} ) => {
+const ScrollToDiscover = ( {children, isInView} ) => {
     const handeButtonClick = (e) => {
         scroller.scrollTo("about", {duration: 1000, smooth: true, offset: -40})
     }
 
+    const [isHovered, setIsHovered] = useState(false);
 
     return (
     <motion.div
@@ -32,43 +33,24 @@ const ScrollToDiscover = ( {isInView} ) => {
         }}
         style= {{pointerEvents: isInView ? "all" : "none"}}
     >
-        <div className='w-fit h-10 flex justify-center items-center cursor-pointer select-none sm:text-base sm:gap-2 gap-1 text-sm' onClick={() => handeButtonClick()}>
-            <div className='relative'>
-                <motion.div
-                    //Container div that shows the "highlight" that is within the container
-                    className='h-10 w-5 absolute overflow-hidden'
+        <motion.div 
+            className='w-fit h-10 flex justify-center items-center select-none sm:text-base sm:gap-2 gap-1 text-sm' 
+            >
+            <div className='relative cursor-pointer' onClick={() => handeButtonClick()}>
+                <AnimatedText inputText={"Scroll to see more"} duration={1.5} delay={3} setIsHovered={setIsHovered}/>
+                <motion.div 
+                    className="absolute bottom-[-2px] left-[5%] right-[5%] h-[1px] bg-[#ADB7BE]"
                     animate={{
-                        x: ["-100%", "700%"],
+                        scaleX: isHovered ? "100%" : "0%"
+                    }}
+                    initial={{
+                        scaleX: "0%"
                     }}
                     transition={{
-                        duration: 2,
-                        ease: "easeIn",
-                        repeat: Infinity,
-                        repeatDelay: 2
-                    }}   
-                >
-                    <motion.p 
-                        //Second text element with a darker shade to create the "highlight" effect. Moves in the opposite direction of the container to align with the static text below.
-                        className='text-[#696969] whitespace-nowrap'
-                        animate={{
-                            x: ["100%", "-700%"],
-                        }}
-                        transition={{
-                            duration: 2,
-                            ease: "easeIn",
-                            repeat: Infinity,
-                            repeatDelay: 2
-                        }}  
-                        
-                        >
-                        Scroll to see more
-                    </motion.p>
-                </motion.div>
-
-
-                <p className='text-[#ADB7BE]'>
-                    Scroll to see more
-                </p>
+                        duration: 0.4,
+                        ease: "easeInOut",
+                    }}
+                    />
             </div>
             
             <motion.div 
@@ -77,16 +59,58 @@ const ScrollToDiscover = ( {isInView} ) => {
                     y: ["-10%", "10%", "-10%"]
                 }}
                 transition={{
-                    duration: 2,
+                    duration: 1.6,
                     ease: "easeInOut",
                     repeat: Infinity,
                 }}
             >
                 <ArrowDownIcon className='text-[#ADB7BE]'/>
             </motion.div>
-        </div>
+        </motion.div>
     </motion.div>
   )
+}
+
+const AnimatedText = ( {inputText, duration, delay, setIsHovered} ) => {
+    
+    const characters = inputText.split("");
+    const amount = duration / characters.length
+    
+    return  (
+        <motion.div 
+            className='flex flex-row'
+            onHoverStart={() => {setIsHovered(true)}}
+            onHoverEnd={() => setIsHovered(false)}
+        >
+            {
+                characters.map( (word, i) => {
+                    const stagger = (amount * i)
+                    return <Character key={i} duration={duration} delay={delay} stagger={stagger + delay}>{word}</Character>
+                })
+            }
+        </motion.div>
+    )
+
+}
+const Character = ( {children, duration, delay, stagger} ) => {
+    return (
+        <motion.div
+            className='text-[#ADB7BE]'
+            animate= {{
+                color: ["#ADB7BE", "#656565", "#ADB7BE"]
+            }}
+            transition={{
+                duration: duration,
+                delay: stagger,
+                repeat: Infinity,
+                repeatDelay: delay
+            }}
+        >
+        {
+            children == " " ? <span className='mr-1'/> : <span>{children}</span>
+            }
+        </motion.div>
+    )
 }
 
 export default ScrollToDiscover
