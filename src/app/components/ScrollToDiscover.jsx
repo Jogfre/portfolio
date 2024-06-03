@@ -93,15 +93,16 @@ const Character = ( {children, duration, delay, stagger, isHovered} ) => {
         <motion.div
             className='text-[#ADB7BE]'
             animate= {{
-                y: isHovered ? ["0", "-15%", "10%", "0%", "0%", "0%", "0%"] : ["0%", "0%"],
+                y: isHovered ? ["0", "-15%", "10%", "0%", "0%"] : ["0%", "0%"],
                 color: ["#ADB7BE", "#656565", "#ADB7BE"]
             }}
             transition={{
-                duration: duration,
-                delay: stagger,
-                repeat: Infinity,
-                repeatDelay: isHovered ? duration : delay
+                duration: isHovered ? 0.6 : duration,
+                delay: isHovered ? stagger / 2 : stagger,
+                repeat: isHovered ? null : Infinity,
+                repeatDelay: isHovered ? duration : delay,
             }}
+            viewport={{once: "runOnce", amount: 0.5}}
         >
         {
             children == " " ? <span className='mr-1'/> : <span>{children}</span>
