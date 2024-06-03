@@ -9,7 +9,10 @@ const MenuData = memo(({data, selectedTab}) => {
     exit: {y: -10, opacity: 0},
   }
 
-
+  // Currently there is a bug where if you switch tab and trigger the exit animation, 
+  // then switch back to the tab while the exit animation is playing, the tabs gets stuck and won't change state and requires a page reload.
+  
+  //TODO: Fix the above mentioned bug
   return (
     <AnimatePresence mode='wait'>
       <motion.div

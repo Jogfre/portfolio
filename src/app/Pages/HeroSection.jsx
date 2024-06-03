@@ -122,8 +122,7 @@ const HeroSection = () => {
                         <Image 
                             src="/images/ProfilePhoto_Transparent.png"
                             alt="hero image"
-                            className='absolute transform select-none pointer-events-none mt-5'
-                            fill
+                            className='absolute select-none pointer-events-none mt-5 scale-[95%]'
                             style={{objectFit: "contain"}}
                         />
                     </div>
