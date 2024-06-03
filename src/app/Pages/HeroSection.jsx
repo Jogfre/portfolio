@@ -2,6 +2,8 @@ import React from 'react'
 import { TypeAnimation } from 'react-type-animation'
 import { motion } from 'framer-motion'
 import { Link } from 'react-scroll';
+import ContactButton from '../components/HeroButtons/ContactButton';
+import CVButton from '../components/HeroButtons/CVButton';
 
 
 const fadeAnimationVariants = {
@@ -84,39 +86,13 @@ const HeroSection = () => {
                         >
                         Welcome to my portfolio! I am Fredrik, a passionate mobile and software developer. Through this platform, I invite you to explore my journey, projects, and other creative endeavors.
                     </motion.p>
-                    <div className='place-self-center'>
-                        <Link to="contact" duration={2000} smooth={true}>
-                            <motion.button 
-                                variants={fadeAnimationVariants} initial={"initial_button"} animate={"animate_button"} viewport={{once: "runOnce"}} 
-                                whileHover={{
-                                    boxShadow: `0px 0px 15px #FBC57E`,
-                                    transition: {duration: 0.2},
-                                }}
-                                whileTap={{
-                                    scale: 0.9
-                                }}
-                                transition={{ duration: 0.2}}
-                                className='px-6 py-3 w-full lg:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] text-white mr-4'>
-                                Get in contact
-                            </motion.button>
-                        </Link>
-                        {/* 
-                        <motion.button variants={fadeAnimationVariants} 
-                            initial={"initial_button"} animate={"animate_button"} viewport={{once: "runOnce"}}
-                            whileHover={{
-                                boxShadow: `0px 0px 15px #FBC57E`,
-                                transition: {duration: 0.2},
-                            }}
-                            whileTap={{
-                                scale: 0.9
-                            }}
-                            transition={{ duration: 0.2 }}
 
-                            className='px-1 py-1 w-full lg:w-fit rounded-full bg-gradient-to-br from-[#1a2766] via-[#ae1b1e] to-[#fc9f32] text-white mt-4'>
-                            <span className='block bg-[#121212] rounded-full px-5 py-2'>Download CV</span>
-                        </motion.button>
-                        */}
+
+                    <div className='flex  lg:flex-row flex-col gap-4 place-self-center'>
+                        <ContactButton fadeAnimationVariants={fadeAnimationVariants}/>
                     </div>
+
+
                 </div>
                 <motion.div variants={fadeAnimationVariants} initial={"initial_avatar"} animate={"animate_entry"} viewport={{once: "runOnce"}} className='lg:order-last lg:mb-0 mb-4 order-first col-span-5 place-self-center pt-4'>
                     <div className='rounded-full shadow-lg shadow-[#1a2766] bg-gradient-to-b from-[#1F1F1F] to-[#080808] xl:w-[400px] xl:h-[400px] sm:w-[300px] sm:h-[300px] w-[240px] h-[240px] border-4 border-[#1f1f1f] relative overflow-hidden'>

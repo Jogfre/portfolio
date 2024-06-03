@@ -45,7 +45,7 @@ const ContactSection = () => {
       >
         <div className='px-5'>
             <h5 className='text-xl font-bold text-white my-2'>Let&apos;s Connect!</h5>
-            <p className='text-[#ADB7BE] mb-4 max-w-md'>I am currently looking for new opportunities. Wether you have a question or just want to reach out, I will get back to you as soon as possible!</p>
+            <p className='text-[#ADB7BE] mb-4 max-w-md'>I am currently looking for new opportunities. Whether you have a question or just want to reach out, I will get back to you as soon as possible!</p>
             
             
             <div className='socials flex flex-row gap-2'>

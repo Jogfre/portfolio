@@ -7,7 +7,7 @@ import { scroller } from 'react-scroll'
 
 const ScrollToDiscover = ( {children, isInView} ) => {
     const handeButtonClick = (e) => {
-        scroller.scrollTo("about", {duration: 1000, smooth: true, offset: -40})
+        scroller.scrollTo("about", {duration: 1000, smooth: true})
     }
 
     const [isHovered, setIsHovered] = useState(false);
@@ -93,12 +93,13 @@ const Character = ( {children, duration, delay, stagger, isHovered} ) => {
         <motion.div
             className='text-[#ADB7BE]'
             animate= {{
-                y: isHovered ? ["0", "-15%", "10%", "0%", "0%"] : ["0%", "0%"],
+                y: isHovered ? ["0", "-20%", "15%", "0%", "0%"] : ["0%", "0%"],
                 color: ["#ADB7BE", "#656565", "#ADB7BE"]
             }}
             transition={{
-                duration: isHovered ? 0.6 : duration,
-                delay: isHovered ? stagger / 2 : stagger,
+                ease: "easeInOut",
+                duration: isHovered ? 0.8 : duration,
+                delay: isHovered ? stagger / 6 : stagger,
                 repeat: isHovered ? null : Infinity,
                 repeatDelay: isHovered ? duration : delay,
             }}
