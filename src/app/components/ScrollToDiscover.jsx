@@ -37,7 +37,7 @@ const ScrollToDiscover = ( {children, isInView} ) => {
             className='w-fit h-10 flex justify-center items-center select-none sm:text-base sm:gap-2 gap-1 text-sm' 
             >
             <div className='relative cursor-pointer' onClick={() => handeButtonClick()}>
-                <AnimatedText inputText={"Scroll to see more"} duration={1.5} delay={3} setIsHovered={setIsHovered}/>
+                <AnimatedText inputText={"Scroll to see more"} duration={1.5} delay={3} setIsHovered={setIsHovered} isHovered={isHovered}/>
                 <motion.div 
                     className="absolute bottom-[-2px] left-[5%] right-[5%] h-[1px] bg-[#ADB7BE]"
                     animate={{scaleX: isHovered ? "100%" : "0%"}}
@@ -67,7 +67,7 @@ const ScrollToDiscover = ( {children, isInView} ) => {
   )
 }
 
-const AnimatedText = ( {inputText, duration, delay, setIsHovered} ) => {
+const AnimatedText = ( {inputText, duration, delay, setIsHovered, isHovered} ) => {
     
     const characters = inputText.split("");
     const amount = duration / characters.length
@@ -81,25 +81,26 @@ const AnimatedText = ( {inputText, duration, delay, setIsHovered} ) => {
             {
                 characters.map( (word, i) => {
                     const stagger = (amount * i)
-                    return <Character key={i} duration={duration} delay={delay} stagger={stagger}>{word}</Character>
+                    return <Character key={i} duration={duration} delay={delay} stagger={stagger} isHovered={isHovered}>{word}</Character>
                 })
             }
         </motion.div>
     )
 
 }
-const Character = ( {children, duration, delay, stagger} ) => {
+const Character = ( {children, duration, delay, stagger, isHovered} ) => {
     return (
         <motion.div
             className='text-[#ADB7BE]'
             animate= {{
+                y: isHovered ? ["0", "-15%", "10%", "0%", "0%", "0%", "0%"] : ["0%", "0%"],
                 color: ["#ADB7BE", "#656565", "#ADB7BE"]
             }}
             transition={{
                 duration: duration,
                 delay: stagger,
                 repeat: Infinity,
-                repeatDelay: delay
+                repeatDelay: isHovered ? duration : delay
             }}
         >
         {
