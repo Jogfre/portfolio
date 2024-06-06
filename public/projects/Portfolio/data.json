@@ -1,7 +1,7 @@
 {
     "title": "This Website",
     "description": "This website was a really fun project where I got to experiment with my creativity and web development skills. I had great fun playing around with animations and other effects. This project section is my favorite part!",
-    "icons": ["tailwind-css", "react", "nextjs"],
+    "icons": ["tailwind-css", "react", "framer-motion", "nextjs"],
     "link": "https://github.com/Jogfre/portfolio",
     "button": "View on Github"
 }
