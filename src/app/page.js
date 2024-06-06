@@ -6,7 +6,7 @@ import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
 import { useEffect, useRef, useState } from "react";
-import StarsBackground from "./components/StarsBackground";
+import StarsBackground from "./components/SpaceBackground/StarsBackground";
 
 
 
