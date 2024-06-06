@@ -87,10 +87,13 @@ const NavBar = ({ranges}) => {
           scale: 1,
         }}
         animate = {{
-          opacity: 1,
+          opacity: 0.6,
           scale: 1,
           y: "0%",
           transition: { type: 'ease-in', duration: 0.6}
+        }}
+        whileHover={{
+          opacity: 1
         }}
         viewport={{once: "runOnce"}}
       >

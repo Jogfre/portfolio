@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { TypeAnimation } from 'react-type-animation'
-import { motion } from 'framer-motion'
+import { motion, useMotionTemplate, animate, useMotionValue } from 'framer-motion'
 import { Link } from 'react-scroll';
 import ContactButton from '../components/HeroButtons/ContactButton';
 import CVButton from '../components/HeroButtons/CVButton';
-
 
 const fadeAnimationVariants = {
     initial: {
@@ -42,6 +41,21 @@ const fadeAnimationVariants = {
   }
 
 const HeroSection = () => {
+
+
+    const COLORS = ["#2543da", "#d83e40", "#db7500"]
+    const color = useMotionValue(COLORS[0])
+    const boxShadow = useMotionTemplate`0px 5px 20px ${color}`
+
+    useEffect(() => {
+        animate(color, COLORS, {
+            ease: 'easeInOut',
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "mirror"
+        })
+    }, [])
+
 
     return (
         <section className='min-h-screen' >
@@ -95,14 +109,16 @@ const HeroSection = () => {
 
                 </div>
                 <motion.div variants={fadeAnimationVariants} initial={"initial_avatar"} animate={"animate_entry"} viewport={{once: "runOnce"}} className='lg:order-last lg:mb-0 mb-4 order-first col-span-5 place-self-center pt-4'>
-                    <div className='rounded-full shadow-lg shadow-[#1a2766] bg-gradient-to-b from-[#1F1F1F] to-[#080808] xl:w-[400px] xl:h-[400px] sm:w-[300px] sm:h-[300px] w-[240px] h-[240px] border-4 border-[#1f1f1f] relative overflow-hidden'>
+                    <motion.div className='rounded-full bg-gradient-to-b from-[#1F1F1F] to-[#080808] xl:w-[400px] xl:h-[400px] sm:w-[300px] sm:h-[300px] w-[240px] h-[240px] border-4 border-[#1f1f1f] relative overflow-hidden'
+                        style={{boxShadow}}
+                    >
                         <img 
                             src={"/images/ProfilePhoto_Transparent.png"}
                             alt="hero image"
                             className='absolute select-none pointer-events-none mt-5 scale-[95%]'
                             style={{objectFit: "contain"}}
                         />
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

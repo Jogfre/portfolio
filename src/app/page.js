@@ -6,7 +6,7 @@ import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
 import { useEffect, useRef, useState } from "react";
-
+import StarsBackground from "./components/StarsBackground";
 
 
 
@@ -75,6 +75,8 @@ export default function Home() {
 
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
+      <StarsBackground />
+
       <NavBar ranges={sectionRanges} />
         <div className="container mx-auto  mt-2 lg:mt-24 lg:pt-12 pt-2 px-3 md:px-10">
           <div ref={heroRef}><HeroSection /></div>

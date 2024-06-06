@@ -13,8 +13,8 @@ const IconOverlay = ({iconName}) => {
     const name = capitalizeFirstLetter(iconName)  
     return (
         <div className='absolute top-0 left-0 w-full h-full flex text-wrap justify-center items-center text-center opacity-0 hover:opacity-100 transition-opacity duration-500'>
-            <div className='absolute top-0 left-0 w-full h-full bg-black opacity-80 rounded-[2vmin] md:border-2 border-0 border-white'/>
-            <p className='z-10 lg:text-lg md:text-base text-sm'>{name}</p>
+            <div className='absolute top-0 left-0 w-full h-full bg-black opacity-80 rounded-[2vmin] md:border-2 border border-white'/>
+            <p className='z-10 lg:text-lg md:text-base text-sm text-stroke'>{name}</p>
         </div> 
     )
 }
