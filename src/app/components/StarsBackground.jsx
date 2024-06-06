@@ -25,7 +25,7 @@ const StarsBackground = () => {
                 style={{translateY: translateY}}
 
             >
-                <Canvas><Stars radius={20} count={2500} factor={3} fade speed={2}/></Canvas>
+                <Canvas><Stars radius={20} count={2500} factor={3} fade speed={1}/></Canvas>
             </motion.div>
         </div>
 
