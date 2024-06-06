@@ -1,35 +1,34 @@
 import React, { useRef } from 'react'
 import { Canvas } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import { motion, useScroll , useTransform } from 'framer-motion'
+import { motion, useMotionValueEvent, useScroll , useTransform } from 'framer-motion'
 
 
 const StarsBackground = () => {
     
-    const targetRef = useRef(null)
     const { scrollYProgress } = useScroll({
-        target: targetRef,
-        offset: ["start start", "center start"],
     })
     
-    const transformedOpacity = useTransform(
+    const translateY = useTransform(
         scrollYProgress,
         [0, 1],
-        [1, 0]
+        ["0%", "-30%"]
     )
-    
+        
     return (
-        <motion.div 
-        ref={targetRef}
-        className="absolute inset-0 z-0 h-[200vh]"
-        initial={{opacity: 0}}
-        animate={{opacity: 1}}
-        transition={{duration: 2}}
-        style={{opacity: transformedOpacity}}
-        >
-        <Canvas><Stars radius={100} count={5000} factor={4} fade speed={2}/></Canvas>
+        <div className='fixed top-0 left-0 inset-0 z-0 h-full w-full overflow-hidden'>
+            <motion.div 
+                className="absolute top-0 left-0 z-0 h-[200vh] w-full"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={{duration: 2}}
+                style={{translateY: translateY}}
 
-    </motion.div>
+            >
+                <Canvas><Stars radius={100} count={10000} factor={4} fade speed={2}/></Canvas>
+            </motion.div>
+        </div>
+
     )
 }
 

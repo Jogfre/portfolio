@@ -1,7 +1,6 @@
 import { React, useRef } from 'react'
 import { motion, useTransform, useScroll, useSpring, useInView } from 'framer-motion'
 import ProjectCards from './ProjectCards.jsx'  
-import { Element, scroller } from 'react-scroll';
 
 const Project = ({ projectName, index }) => {
 
@@ -26,7 +25,7 @@ const Project = ({ projectName, index }) => {
 
   const opacity = useTransform(
       smoothY,
-      [0, 0.4, 0.6, 1],
+      [0, 0.3, 0.7, 1],
       [0, 1, 1, 0],
   )
 
@@ -38,14 +37,7 @@ const Project = ({ projectName, index }) => {
 
   const isInView = useInView(targetRef, {amount: "all", margin: "0% 10% 10% 10%"}) 
   
-
-  /* ---> useEffect to track the change and update the current index. Whenever isInView changes, the hook function will be updated.
-  useEffect(() => { 
-    hook(index)
-  }, [isInView]);
-  */
   
-
   const colors = [
     '#2543da',
     '#d83e40',
