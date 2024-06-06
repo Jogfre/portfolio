@@ -34,7 +34,7 @@ const ScrollToDiscover = ( {children, isInView} ) => {
         style= {{pointerEvents: isInView ? "all" : "none"}}
     >
         <motion.div 
-            className='w-fit h-10 flex justify-center items-center select-none sm:text-base sm:gap-2 gap-1 text-sm' 
+            className='w-fit h-10 flex justify-around items-center select-none sm:text-base sm:gap-2 gap-1 text-sm bg-[#121212] px-2' 
             >
             <div className='relative cursor-pointer' onClick={() => handeButtonClick()}>
                 <AnimatedText inputText={"Scroll to see more"} duration={1.5} delay={3} setIsHovered={setIsHovered} isHovered={isHovered} isInView={isInView}/>

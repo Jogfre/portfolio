@@ -1,7 +1,7 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Canvas } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
-import { motion, useMotionValueEvent, useScroll , useTransform } from 'framer-motion'
+import { motion, useScroll , useTransform } from 'framer-motion'
 
 
 const StarsBackground = () => {
@@ -25,7 +25,7 @@ const StarsBackground = () => {
                 style={{translateY: translateY}}
 
             >
-                <Canvas><Stars radius={100} count={10000} factor={4} fade speed={2}/></Canvas>
+                <Canvas><Stars radius={50} count={3000} factor={3} fade speed={1}/></Canvas>
             </motion.div>
         </div>
 

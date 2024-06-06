@@ -45,7 +45,7 @@ const HeroSection = () => {
 
     const COLORS = ["#2543da", "#d83e40", "#db7500"]
     const color = useMotionValue(COLORS[0])
-    const boxShadow = useMotionTemplate`0px 5px 20px ${color}`
+    const boxShadow = useMotionTemplate`0px 5px 14px ${color}`
 
     useEffect(() => {
         animate(color, COLORS, {
