@@ -12,7 +12,7 @@ const StarsBackground = () => {
     const translateY = useTransform(
         scrollYProgress,
         [0, 1],
-        ["0%", "-30%"]
+        ["0%", "-20%"]
     )
         
     return (
@@ -25,7 +25,7 @@ const StarsBackground = () => {
                 style={{translateY: translateY}}
 
             >
-                <Canvas><Stars radius={50} count={3000} factor={3} fade speed={1}/></Canvas>
+                <Canvas><Stars radius={20} count={2500} factor={3} fade speed={2}/></Canvas>
             </motion.div>
         </div>
 
