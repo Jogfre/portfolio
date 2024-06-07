@@ -1,4 +1,4 @@
-import { React, useRef } from 'react'
+import React, { useRef } from 'react'
 import { motion, useTransform, useScroll, useSpring, useInView } from 'framer-motion'
 import ProjectCards from './ProjectCards.jsx'  
 
@@ -92,4 +92,4 @@ const Project = ({ projectName, index }) => {
   )
 }
 
-export default Project
+export default React.memo(Project)

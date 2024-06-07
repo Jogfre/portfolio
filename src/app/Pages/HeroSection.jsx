@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { TypeAnimation } from 'react-type-animation'
 import { motion, useMotionTemplate, animate, useMotionValue } from 'framer-motion'
-import { Link } from 'react-scroll';
 import ContactButton from '../components/HeroButtons/ContactButton';
+import Image from 'next/image'
 import CVButton from '../components/HeroButtons/CVButton';
 
 const fadeAnimationVariants = {
@@ -54,7 +54,7 @@ const HeroSection = () => {
             repeat: Infinity,
             repeatType: "mirror"
         })
-    }, [])
+    })
 
 
     return (
@@ -115,6 +115,7 @@ const HeroSection = () => {
                         <img 
                             src={"/images/ProfilePhoto_Transparent.png"}
                             alt="hero image"
+                            fill
                             className='absolute select-none pointer-events-none mt-5 scale-[95%]'
                             style={{objectFit: "contain"}}
                         />

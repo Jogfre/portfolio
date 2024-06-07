@@ -1,4 +1,4 @@
-import { React } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import FancyMenu from '../components/FancyMenu/FancyMenu';
 
@@ -94,4 +94,4 @@ const AboutSection = () => {
   )
 }
 
-export default AboutSection
+export default React.memo(AboutSection);

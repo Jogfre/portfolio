@@ -1,10 +1,11 @@
 "use client";
-import React, { useRef, useEffect, useState, useMemo } from 'react'
+import React, { useRef, useState, useMemo } from 'react'
 import NavLink from './NavLink'
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion'
 import FloatingNavBar from './FloatingNavBar';
 import MenuButton from './MenuButton';
 import ScrollToDiscover from './ScrollToDiscover';
+import Image from 'next/image'
 
 
 const floatingNavBarAnimations = {
@@ -54,12 +55,6 @@ const NavBar = ({ranges}) => {
     [0, ranges.about, ranges.project, ranges.contact, 0.95],
     [0.05, 0.25, 0.50, 0.70, 1],
   )
-
-  const smoothProgress = useSpring(scaledProgress, {
-    stiffness: 100,
-    damping: 25,
-    restDelta: 0.001
-  });
 
   useMotionValueEvent(scaledProgress, "change", (latest) => {
     const titles = navLinks.map((navLink) => navLink.title) // Get the titles and where the dividers for the sections on the navbar should be

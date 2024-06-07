@@ -90,4 +90,4 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
       )
     }
 
-export default ProjectCards
+export default React.memo(ProjectCards);

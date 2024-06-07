@@ -5,7 +5,7 @@ import ContactSection from "./Pages/ContactSection";
 import HeroSection from "./Pages/HeroSection";
 import ProjectSection from "./Pages/ProjectSection";
 import NavBar from "./components/NavBar";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Profiler } from "react";
 import StarsBackground from "./components/SpaceBackground/StarsBackground";
 
 
@@ -69,15 +69,44 @@ export default function Home() {
     return () => {
       window.removeEventListener('resize', calculatePositions);
     };
-  }, []);
+  },[]);
 
   // NavBar stuff ends here.
+  
+  const [backgroundEnabled, setBackgroundEnabled] = useState(false)
+
+  useEffect(() => {
+    if (backgroundEnabled) {
+      // Background is already enabled. No need to run the check.
+      return
+    }
+    
+    const mobileRegex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    const firefoxRegex = /FireFox/i;
+
+    const isMobile = mobileRegex.test(navigator.userAgent);
+    const isFirefox = firefoxRegex.test(navigator.userAgent);
+    
+    if (!isMobile) {
+      // Device is not mobile, so canvas renders without problems.
+      setBackgroundEnabled(true)
+      return
+    }
+    if (!isFirefox) {
+      // Device is mobile, but is not using firefox so the canvas renders without problems.
+      setBackgroundEnabled(true)
+    }
+    // Device is mobile and is using firefox where the canvas seems to be behaving buggy, therefor it is not enabled.
+
+  },[setBackgroundEnabled, backgroundEnabled])
+
 
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
-      <StarsBackground />
 
-      <NavBar ranges={sectionRanges} />
+        { backgroundEnabled ? <StarsBackground /> : <div /> }
+        <NavBar ranges={sectionRanges} />
+
         <div className="container mx-auto  mt-2 lg:mt-24 lg:pt-12 pt-2 px-3 md:px-10">
           <div ref={heroRef}><HeroSection /></div>
           <div ref={aboutRef}><AboutSection /></div>
