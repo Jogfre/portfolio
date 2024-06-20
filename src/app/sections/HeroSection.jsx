@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, lazy } from 'react'
 import { TypeAnimation } from 'react-type-animation'
 import { motion, useMotionTemplate, animate, useMotionValue } from 'framer-motion'
 import ContactButton from '../components/HeroButtons/ContactButton';
@@ -115,7 +115,7 @@ const HeroSection = () => {
                         <img 
                             src={"/images/ProfilePhoto_Transparent.png"}
                             alt="hero image"
-                            fill
+                            layout='fill'
                             className='absolute select-none pointer-events-none mt-5 scale-[95%]'
                             style={{objectFit: "contain"}}
                         />

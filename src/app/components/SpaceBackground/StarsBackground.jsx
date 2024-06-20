@@ -3,7 +3,6 @@ import React from 'react'
 import { Canvas } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import { motion, useScroll , useTransform } from 'framer-motion'
-import AnimatedIcon from './AnimatedIcon';
 
 
 const StarsBackground = () => {

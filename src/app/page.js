@@ -1,13 +1,18 @@
 
 "use client"
-import AboutSection from "./Pages/AboutSection";
-import ContactSection from "./Pages/ContactSection";
-import HeroSection from "./Pages/HeroSection";
-import ProjectSection from "./Pages/ProjectSection";
+import HeroSection from "./sections/HeroSection";
 import NavBar from "./components/NavBar";
-import { useEffect, useRef, useState, Profiler } from "react";
+import { useEffect, useRef, useState, lazy } from "react";
 import StarsBackground from "./components/SpaceBackground/StarsBackground";
 
+
+// import AboutSection from "./sections/AboutSection";
+// import ProjectSection from "./sections/ProjectSection";
+// import ContactSection from "./sections/ContactSection";
+
+const AboutSection = lazy(() => import("./sections/AboutSection"))
+const ProjectSection = lazy(() => import("./sections/ProjectSection"))
+const ContactSection = lazy(() => import("./sections/ContactSection"))
 
 
 export default function Home() {  
@@ -80,24 +85,27 @@ export default function Home() {
       // Background is already enabled. No need to run the check.
       return
     }
-    
-    const mobileRegex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-    const firefoxRegex = /FireFox/i;
-
-    const isMobile = mobileRegex.test(navigator.userAgent);
-    const isFirefox = firefoxRegex.test(navigator.userAgent);
-    
-    if (!isMobile) {
-      // Device is not mobile, so canvas renders without problems.
-      setBackgroundEnabled(true)
-      return
+    try {
+      const mobileRegex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      const firefoxRegex = /FireFox/i;
+  
+      const isMobile = mobileRegex.test(navigator.userAgent);
+      const isFirefox = firefoxRegex.test(navigator.userAgent);
+      
+      if (!isMobile) {
+        // Device is not mobile, so canvas renders without problems.
+        setBackgroundEnabled(true)
+        return
+      }
+      if (!isFirefox) {
+        // Device is mobile, but is not using firefox so the canvas renders without problems.
+        setBackgroundEnabled(true)
+      }
+      // Device is mobile and is using firefox where the canvas seems to be behaving buggy, therefor it is not enabled.
+    } catch  (e) {
+      console.log(e)
     }
-    if (!isFirefox) {
-      // Device is mobile, but is not using firefox so the canvas renders without problems.
-      setBackgroundEnabled(true)
-    }
-    // Device is mobile and is using firefox where the canvas seems to be behaving buggy, therefor it is not enabled.
-
+    
   },[setBackgroundEnabled, backgroundEnabled])
 
 
