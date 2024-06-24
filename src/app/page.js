@@ -92,14 +92,13 @@ export default function Home() {
       const isMobile = mobileRegex.test(navigator.userAgent);
       const isFirefox = firefoxRegex.test(navigator.userAgent);
       
-      if (!isMobile) {
-        // Device is not mobile, so canvas renders without problems.
-        setBackgroundEnabled(true)
-        return
-      }
-      if (!isFirefox) {
-        // Device is mobile, but is not using firefox so the canvas renders without problems.
-        setBackgroundEnabled(true)
+      if (!isMobile || !isFirefox) {
+        // Device is not mobile and running firefox, therefor we can enable the background.
+        const DELAY_MS = 500; // This delay is just to make sure the background doesn't animate in at the same time as the rest of the components.
+        setTimeout(() => {
+          setBackgroundEnabled(true)
+        }, DELAY_MS)
+
       }
       // Device is mobile and is using firefox where the canvas seems to be behaving buggy, therefor it is not enabled.
     } catch  (e) {

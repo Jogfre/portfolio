@@ -27,14 +27,14 @@ const StarsBackground = () => {
         [0, 1],
         ["0%", "-35%"]
     )
-        
+    const DURATION = 5;
     return (
         <div className='fixed top-0 left-0 inset-0 z-0 h-full w-full overflow-hidden'>
             <motion.div 
                 className="absolute top-0 left-0 z-0 h-[200vh] w-full"
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
-                transition={{duration: 2}}
+                transition={{duration: DURATION}}
                 style={{translateY: translateY}}
 
             >
@@ -44,7 +44,7 @@ const StarsBackground = () => {
                 className="absolute top-0 left-0 z-0 h-[200vh] w-full"
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
-                transition={{duration: 2}}
+                transition={{duration: DURATION}}
                 style={{translateY: translateY2}}
 
             >
@@ -54,7 +54,7 @@ const StarsBackground = () => {
                 className="absolute top-0 left-0 z-0 h-[200vh] w-full"
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
-                transition={{duration: 2}}
+                transition={{duration: DURATION}}
                 style={{translateY: translateY3}}
 
             >

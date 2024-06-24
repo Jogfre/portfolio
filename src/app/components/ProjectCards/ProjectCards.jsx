@@ -19,6 +19,9 @@ const IconOverlay = ({iconName}) => {
     )
 }
 
+const imageLoader = ({ src }) => {
+    return `https://fredrikjogell.com/${src}`
+  }
 
 const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
@@ -37,39 +40,72 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
                         src={`/icons/${icon2}.svg`}
                         alt={`${projectName} icon 2`}
                         className='pointer-events-none md:p-2 p-1'
-                        fill
+                        fill={true}
+                       loading="lazy"
                         style={{objectFit: "contain"}}
                 />
                 <IconOverlay iconName={icon2}/>
             </div> : <div/>}
 
-            <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img4.jpg)`, backgroundSize: "cover" }} />
+            <div className="big-card card">
+                <Image 
+                    src={`/projects/${projectName}/imgLarge/img4.jpg`}
+                    loader={imageLoader}
+                    fill={true}
+                    loading="lazy"
+                    className='select-none pointer-events-none'
+                    alt={`${projectName}_img4`}
+                    style={{objectFit: "cover"}}
+                />
+            </div>
 
             {iconLen >= 4 ? <div className="small-card card relative">
-                <Image
+                <Image 
                         src={`/icons/${icon4}.svg`}
-                        alt={`${projectName} icon 4`}
+                        alt={`${projectName} icon 1`}
                         className='pointer-events-none md:p-2 p-1'
-                        fill
+                        fill={true}
+                        loading="lazy"
                         style={{objectFit: "contain"}}
                 />
                 <IconOverlay iconName={icon4}/>
             </div> : <div/>}
             
-            <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img3.jpg)`, backgroundSize: "cover" }} />
+            <div className="big-card card">
+                <Image 
+                    src={`/projects/${projectName}/imgLarge/img3.jpg`}
+                    loader={imageLoader}
+                    fill={true}
+                    loading="lazy"
+                    className='select-none pointer-events-none'
+                    alt={`${projectName}_img3`}
+                    style={{objectFit: "cover"}}
+                />
+            </div>
 
             {iconLen >= 1 ? <div className="small-card card relative">
                 <Image 
                         src={`/icons/${icon1}.svg`}
                         alt={`${projectName} icon 1`}
                         className='pointer-events-none md:p-2 p-1'
-                        fill
+                        fill={true}
+                    loading="lazy"
                         style={{objectFit: "contain"}}
                 />
                 <IconOverlay iconName={icon1}/>
             </div> : <div/>}
 
-            <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img2.jpg)`, backgroundSize: "cover" }} />
+            <div className="big-card card">
+                <Image 
+                    src={`/projects/${projectName}/imgLarge/img2.jpg`}
+                    loader={imageLoader}
+                    fill={true}
+                    loading="lazy"
+                    className='select-none pointer-events-none'
+                    alt={`${projectName}_img2`}
+                    style={{objectFit: "cover"}}
+                />
+            </div>
 
             
             {iconLen >= 3 ? 
@@ -78,13 +114,24 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
                         src={`/icons/${icon3}.svg`}
                         alt={`${projectName} icon 3`}
                         className='pointer-events-none md:p-2 p-1'
-                        fill
+                        fill={true}
+                        loading="lazy"
                         style={{objectFit: "contain"}}
                 />
                 <IconOverlay iconName={icon3}/> 
             </div> : <div/>}
 
-            <div className="big-card card" style={{ background: `url(/projects/${projectName}/imgLarge/img1.jpg)`, backgroundSize: "cover" }} />
+            <div className="big-card card">
+                <Image 
+                    src={`/projects/${projectName}/imgLarge/img1.jpg`}
+                    loader={imageLoader}
+                    fill={true}
+                    loading="lazy"
+                    className='select-none pointer-events-none'
+                    alt={`${projectName}_img1`}
+                    style={{objectFit: "cover"}}
+                />
+            </div>
 
         </div>
       )

@@ -30,19 +30,19 @@
 
 .card {
     aspect-ratio: 5 / 7;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0);
     position: absolute;
     transform: (50%, 50%);
-    border-color: #161616;
+    border-color: rgba(0, 0, 0, 0);
     border-style: solid;
+    box-shadow: 0px 0px 10px #000;
     
 }
 .big-card {
     width: 30vmin;
     max-width: 250px;
     border-radius: 1vmin;
-    background-color: white;
-    border-width: 3px;
+    border-width: 0px;
     overflow: hidden;
     user-select: none;
 }

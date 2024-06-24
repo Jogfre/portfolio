@@ -27,7 +27,9 @@ const floatingNavBarAnimations = {
   }
 };
 
-
+const imageLoader = ({ src }) => {
+  return `https://fredrikjogell.com/${src}`
+}
 
 
 
@@ -92,10 +94,12 @@ const NavBar = ({ranges}) => {
         }}
         viewport={{once: "runOnce"}}
       >
-        <img
+        <Image
           className='pointer-events-none'
           src={"/images/Icon.png"}
           alt="Logo image"
+          loading="lazy"
+          loader={imageLoader}
           width={45}
           height={45}
         />

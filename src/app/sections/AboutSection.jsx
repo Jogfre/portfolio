@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import FancyMenu from '../components/FancyMenu/FancyMenu';
+import Image from 'next/image';
 
 
 const fadeAnimationVariants = {
@@ -29,6 +30,9 @@ const fadeAnimationVariants = {
   runOnce: true
 }
   
+const imageLoader = ({ src }) => {
+  return `https://fredrikjogell.com/${src}`
+}
 
 const AboutSection = () => {
 
@@ -36,18 +40,27 @@ const AboutSection = () => {
     <section className='text-white min-h-screen' name="about">
       <div className='lg:grid lg:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 sm:px-16'>
         
-        
+
         {
           // About Me Image
         }
-        <motion.img 
-          className='rounded-xl w-3/5 lg:w-[500px] pointer-events-none'
+        <motion.div 
+          className='w-3/5 lg:w-full max-w-[500px] aspect-[3/5] overflow-hidden rounded-xl'
           variants={fadeAnimationVariants}
           initial={"initial_picture"}
           whileInView={"animate_picture"}
           viewport={{once: "runOnce", amount: 0.25}}
-          src={"/images/AboutMePhoto.jpg"}
-          alt="about image"/>
+          >
+            <Image 
+              src={"images/AboutMePhoto.jpg"}
+              loader={imageLoader}
+              fill={true}
+              loading="lazy"
+              className='select-none pointer-events-none'
+              alt="about image"
+              style={{objectFit: "cover"}}
+            />
+          </motion.div>
 
 
         {

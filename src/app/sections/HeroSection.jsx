@@ -7,10 +7,10 @@ import CVButton from '../components/HeroButtons/CVButton';
 
 const fadeAnimationVariants = {
     initial: {
-      opacity: 0,
-      y: "50%",
-      scale: 1,
-      filter: "blur(20px)",
+        opacity: 0,
+        y: "50%",
+        scale: 1,
+        filter: "blur(20px)",
     },
     initial_button: {
         opacity: 0,
@@ -22,8 +22,8 @@ const fadeAnimationVariants = {
         y: "25%",
         filter: "blur(10px)",
     },
-      
-    
+        
+
     animate_entry: {
         opacity: 1,
         scale: 1,
@@ -38,7 +38,13 @@ const fadeAnimationVariants = {
         filter: "blur(0px)",
         transition: { type: 'ease-in', duration: 0.6}
     }
-  }
+}
+
+
+const imageLoader = ({ src }) => {
+    console.log(`https://fredrikjogell.com/${src}`)
+    return `https://fredrikjogell.com/${src}`
+}
 
 const HeroSection = () => {
 
@@ -91,6 +97,7 @@ const HeroSection = () => {
                             repeat={Infinity}
                         />
                     </motion.div>
+
                     <motion.p 
                         variants={fadeAnimationVariants} 
                         initial={"initial"}
@@ -112,10 +119,12 @@ const HeroSection = () => {
                     <motion.div className='rounded-full bg-gradient-to-b from-[#1F1F1F] to-[#080808] xl:w-[400px] xl:h-[400px] sm:w-[300px] sm:h-[300px] w-[240px] h-[240px] border-4 border-[#1f1f1f] relative overflow-hidden'
                         style={{boxShadow}}
                     >
-                        <img 
+                        <Image 
                             src={"/images/ProfilePhoto_Transparent.png"}
+                            loader={imageLoader}
                             alt="hero image"
-                            layout='fill'
+                            fill={true}
+                            priority={true}
                             className='absolute select-none pointer-events-none mt-5 scale-[95%]'
                             style={{objectFit: "contain"}}
                         />
