@@ -42,7 +42,6 @@ const fadeAnimationVariants = {
 
 
 const imageLoader = ({ src }) => {
-    console.log(`https://fredrikjogell.com/${src}`)
     return `https://fredrikjogell.com/${src}`
 }
 
@@ -120,7 +119,7 @@ const HeroSection = () => {
                         style={{boxShadow}}
                     >
                         <Image 
-                            src={"/images/ProfilePhoto_Transparent.png"}
+                            src={"images/ProfilePhoto_Transparent.png"}
                             loader={imageLoader}
                             alt="hero image"
                             fill={true}

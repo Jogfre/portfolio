@@ -37,11 +37,12 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             {iconLen >= 2 ? <div className="small-card card relative">
                 <Image 
-                        src={`/icons/${icon2}.svg`}
+                        src={`icons/${icon2}.svg`}
+                        loader={imageLoader}
                         alt={`${projectName} icon 2`}
                         className='pointer-events-none md:p-2 p-1'
                         fill={true}
-                       loading="lazy"
+                        loading="lazy"
                         style={{objectFit: "contain"}}
                 />
                 <IconOverlay iconName={icon2}/>
@@ -49,7 +50,7 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             <div className="big-card card">
                 <Image 
-                    src={`/projects/${projectName}/imgLarge/img4.jpg`}
+                    src={`projects/${projectName}/imgLarge/img4.jpg`}
                     loader={imageLoader}
                     fill={true}
                     loading="lazy"
@@ -61,7 +62,8 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             {iconLen >= 4 ? <div className="small-card card relative">
                 <Image 
-                        src={`/icons/${icon4}.svg`}
+                        src={`icons/${icon4}.svg`}
+                        loader={imageLoader}
                         alt={`${projectName} icon 1`}
                         className='pointer-events-none md:p-2 p-1'
                         fill={true}
@@ -73,7 +75,7 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
             
             <div className="big-card card">
                 <Image 
-                    src={`/projects/${projectName}/imgLarge/img3.jpg`}
+                    src={`projects/${projectName}/imgLarge/img3.jpg`}
                     loader={imageLoader}
                     fill={true}
                     loading="lazy"
@@ -85,7 +87,8 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             {iconLen >= 1 ? <div className="small-card card relative">
                 <Image 
-                        src={`/icons/${icon1}.svg`}
+                        src={`icons/${icon1}.svg`}
+                        loader={imageLoader}
                         alt={`${projectName} icon 1`}
                         className='pointer-events-none md:p-2 p-1'
                         fill={true}
@@ -97,7 +100,7 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             <div className="big-card card">
                 <Image 
-                    src={`/projects/${projectName}/imgLarge/img2.jpg`}
+                    src={`projects/${projectName}/imgLarge/img2.jpg`}
                     loader={imageLoader}
                     fill={true}
                     loading="lazy"
@@ -111,7 +114,8 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
             {iconLen >= 3 ? 
             <div className="small-card card relative">
                 <Image 
-                        src={`/icons/${icon3}.svg`}
+                        src={`icons/${icon3}.svg`}
+                        loader={imageLoader}
                         alt={`${projectName} icon 3`}
                         className='pointer-events-none md:p-2 p-1'
                         fill={true}
@@ -123,7 +127,7 @@ const ProjectCards = ( {projectName, iconData, isOpen} ) => {
 
             <div className="big-card card">
                 <Image 
-                    src={`/projects/${projectName}/imgLarge/img1.jpg`}
+                    src={`projects/${projectName}/imgLarge/img1.jpg`}
                     loader={imageLoader}
                     fill={true}
                     loading="lazy"

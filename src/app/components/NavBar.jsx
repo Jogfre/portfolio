@@ -74,7 +74,7 @@ const NavBar = ({ranges}) => {
     <div 
       className='navbar_container left-0 top-0 z-20 relative' ref={targetRef}
     >
-      
+      <ScrollToDiscover isInView={isInView}/>
       <MenuButton links={navLinks} activeTitle={activeTitle}/>
       <motion.div 
         className='h-16 justify-between items-center hidden sm:flex lg:px-16 px-8 bg-[#202020]'
@@ -96,9 +96,9 @@ const NavBar = ({ranges}) => {
       >
         <Image
           className='pointer-events-none'
-          src={"/images/Icon.png"}
+          src={"images/Icon.png"}
           alt="Logo image"
-          loading="lazy"
+          priority={true}
           loader={imageLoader}
           width={45}
           height={45}
@@ -132,7 +132,7 @@ const NavBar = ({ranges}) => {
           )}
         </AnimatePresence>
       </div>
-      <ScrollToDiscover isInView={isInView}/>
+      
     </div>
   )
 }
