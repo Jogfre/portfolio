@@ -78,40 +78,9 @@ export default function Home() {
 
   // NavBar stuff ends here.
   
-  const [backgroundEnabled, setBackgroundEnabled] = useState(false)
-
-  useEffect(() => {
-    if (backgroundEnabled) {
-      // Background is already enabled. No need to run the check.
-      return
-    }
-    try {
-      const mobileRegex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-      const firefoxRegex = /FireFox/i;
-  
-      const isMobile = mobileRegex.test(navigator.userAgent);
-      const isFirefox = firefoxRegex.test(navigator.userAgent);
-      
-      if (!isMobile || !isFirefox) {
-        // Device is not mobile and running firefox, therefor we can enable the background.
-        const DELAY_MS = 500; // This delay is just to make sure the background doesn't animate in at the same time as the rest of the components.
-        setTimeout(() => {
-          setBackgroundEnabled(true)
-        }, DELAY_MS)
-
-      }
-      // Device is mobile and is using firefox where the canvas seems to be behaving buggy, therefor it is not enabled.
-    } catch  (e) {
-      console.log(e)
-    }
-    
-  },[setBackgroundEnabled, backgroundEnabled])
-
-
   return (
     <main name="home" className="flex min-h-screen flex-col bg-[#121212] overflow-hidden">
 
-        { backgroundEnabled ? <StarsBackground /> : <div /> }
         <NavBar ranges={sectionRanges} />
 
         <div className="container mx-auto  mt-2 lg:mt-24 lg:pt-12 pt-2 px-3 md:px-10">
