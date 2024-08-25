@@ -110,6 +110,7 @@ const HeroSection = () => {
 
                     <div className='flex  lg:flex-row flex-col gap-4 place-self-center'>
                         <ContactButton fadeAnimationVariants={fadeAnimationVariants}/>
+                        <CVButton fadeAnimationVariants={fadeAnimationVariants} />
                     </div>
 
 

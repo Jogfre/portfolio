@@ -11,9 +11,10 @@ const TAB_DATA = [
       "Node.js",
       "React",
       "Java",
-      "Git",
       "Python",
-      "Photoshop"
+      "SQL",
+      "Git",
+      "Photoshop",
     ],
     content: (
       <ul className="list-disc pl-2">
